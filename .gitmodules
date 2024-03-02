@@ -1,0 +1,3 @@
+[submodule "gpt-assistants-api-ui"]
+	path = gpt-assistants-api-ui
+	url = git@github.com:ryo-ma/gpt-assistants-api-ui.git
