@@ -1,0 +1,961 @@
+[
+{
+  "Nombre": "TOTAL QUARTZ INEO ECS 5W30   4L   CL (Caja 3 Unidades)",
+  "Precio": 130000,
+  "Marca": ""TOTAL"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "MOBIL SUPER 3000 XE4 5W-30, 1LT (Caja 12 Unidades)",
+  "Precio": 115000,
+  "Marca": ""Mobil"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "MOBIL SUPER 2000 10W-40, 1LT (Caja 12 Unidades)",
+  "Precio": 75385,
+  "Marca": ""Mobil"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "MOBIL SUPER 2000 10W-40, 4LT (Caja 4 Unidades)",
+  "Precio": 75385,
+  "Marca": ""Mobil"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "Rhenus OGT 54 Spray (Caja 12 unidades)",
+  "Precio": 153000,
+  "Marca": "N/A",
+  "Formato": "caja"
+},
+{
+  "Nombre": "TACTIC GADUS S3 T220 10*0,25 LT",
+  "Precio": 1361503,
+  "Marca": "N/A",
+  "Formato": "caja"
+},
+{
+  "Nombre": "WD-40 specialist dry lube (Caja 6 Unidades)",
+  "Precio": 60000,
+  "Marca": "N/A",
+  "Formato": "caja"
+},
+{
+  "Nombre": "ACEITE CHV HAV FULL SYN 5W/30 0,946L (Caja 6 Unidades)",
+  "Precio": 36284,
+  "Marca": ""Chevron"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "Aceite LUBRAX VALORA 5W/30 11L (Caja 12 Unidades)",
+  "Precio": 72156,
+  "Marca": ""Lubrax"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "ACEITE CHV HAV FULL SYN 5W/20 0,946L (Caja 6 Unidades)",
+  "Precio": 40516,
+  "Marca": ""Chevron"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "Aceite LUBRAX ESS. SL 10W/30 4L (Caja 6 Unidades)",
+  "Precio": 72761,
+  "Marca": ""Lubrax"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "ACEITE CHV HAV FULL SYN 5W/40 0,946L (Caja 6 Unidades)",
+  "Precio": 48524,
+  "Marca": ""Chevron"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "ACEITE CHV ATF MD-3 12X0,946L",
+  "Precio": 57046,
+  "Marca": ""Chevron"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "ACEITE CHV DELO GEAR EP-5 80W/90 12X0,94",
+  "Precio": 58124,
+  "Marca": ""Chevron"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "ACEITE CHV SUPREME MO 10W/40 0,946L (Caja 12 Unidades)",
+  "Precio": 58624,
+  "Marca": ""Chevron"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "ACEITE CHV SUPREME MO 20W/50 12X0,946L",
+  "Precio": 58624,
+  "Marca": ""Chevron"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "ACEITE CHV HAVOLINE 4T MCO 20W/50 12X1L",
+  "Precio": 60048,
+  "Marca": ""Chevron"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "ACEITE CHV DELO 400 SDE 15W/40 0,946L (Caja 12 Unidades)",
+  "Precio": 63004,
+  "Marca": ""Chevron"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "ACEITE CHV DELO 400 SDE 15W/40 3,785L (Caja 3 Unidades)",
+  "Precio": 63120,
+  "Marca": ""Chevron"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "Aceite LUBRAX EXTRA TURBO 15W/40 4L (Caja 6 Unidades)",
+  "Precio": 81000,
+  "Marca": ""Lubrax"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "ACEITE CHV HAVOLINE 4T MCO 10W/40 1L (Caja 12 Unidades)",
+  "Precio": 63719,
+  "Marca": ""Chevron"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "Aceite LUBRAX TOP TURBO 15W/40 4L (Caja 6 Unidades)",
+  "Precio": 81328,
+  "Marca": ""Lubrax"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "ACEITE CHV HAVOLINE EXTRA 10W/40 1L (Caja 12 Unidades)",
+  "Precio": 71266,
+  "Marca": ""Chevron"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "Aceite LUBRAX EXTRA TURBO 20W/50 6x4L",
+  "Precio": 81399,
+  "Marca": ""Lubrax"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "ACEITE CHEVRON SUPREME MO 10W/40 4,73L (Caja 3 Unidades)",
+  "Precio": 73000,
+  "Marca": ""Chevron"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "Aceite LUBRAX TURBO 40 6x4L",
+  "Precio": 81422,
+  "Marca": ""Lubrax"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "ACEITE CHV SUPREME MO 20W/50 3X4,73L",
+  "Precio": 72347,
+  "Marca": ""Chevron"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "Aceite LUBRAX ESSENCIAL SF 40 6x4L",
+  "Precio": 82150,
+  "Marca": ""Lubrax"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "Aceite LUBRAX ESS. SL 20W/50 6x4L",
+  "Precio": 82869,
+  "Marca": ""Lubrax"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "Aceite LUBRAX GL-5 80W/90 6x4L",
+  "Precio": 84935,
+  "Marca": ""Lubrax"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "ACEITE CHV HAVOLINE ATF+4 12X0,946L",
+  "Precio": 84595,
+  "Marca": ""Chevron"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "Aceite LUBRAX ESS. SL 15W/40 4L (Caja 6 Unidades)",
+  "Precio": 85332,
+  "Marca": ""Lubrax"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "ACEITE LUBRAX TOP TURBO PRO 15W/40 4L (Caja 6 Unidades)",
+  "Precio": 95691,
+  "Marca": ""Lubrax"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "Aceite LUBRAX TECNO 10W/40 4L (Caja 6 Unidades)",
+  "Precio": 97000,
+  "Marca": ""Lubrax"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "ACEITE CHV HAVOLINE PRODS M 5W/30 1L (Caja 12 Unidades)",
+  "Precio": 89135,
+  "Marca": ""Chevron"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "Aceite LUBRAX GOLD 75W/90 1L (Caja 12 Unidades)",
+  "Precio": 117936,
+  "Marca": ""Lubrax"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "Aceite LUBRAX VALORA 5W/30 4L (Caja 6 Unidades)",
+  "Precio": 140000,
+  "Marca": ""Lubrax"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "ACEITE CHEVRON HAV FULL SYNTETIC 5W/30 4,73L (Caja 3 Unidades)",
+  "Precio": 102000,
+  "Marca": ""Chevron"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "REFRIG. P/RAD. LUBRAX PC-2 MAGENTA 12X1L",
+  "Precio": 25827,
+  "Marca": ""Lubrax"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "REFRIG. P/RAD. LUBRAX PC-2 AZUL 12X1L",
+  "Precio": 25133,
+  "Marca": ""Lubrax"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "REFRIG. P/RAD. LUBRAX PC-2 VERDE 12X1L",
+  "Precio": 25979,
+  "Marca": ""Lubrax"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "Refrig. p/rad. LUBRAX HD-2 L. 12x1L",
+  "Precio": 36772,
+  "Marca": ""Lubrax"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "Aceite LUBRAX ESS. SL 10W/30 1L (Caja 12 Unidades)",
+  "Precio": 38354,
+  "Marca": ""Lubrax"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "Aceite LUBRAX EXTRA TURBO 15W/40 1L (Caja 12 Unidades)",
+  "Precio": 42473,
+  "Marca": ""Lubrax"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "Aceite LUBRAX TOP TURBO 15W/40 1L (Caja 12 Unidades)",
+  "Precio": 42637,
+  "Marca": ""Lubrax"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "Aceite LUBRAX EXTRA TURBO 20W/50 12x1L",
+  "Precio": 42673,
+  "Marca": ""Lubrax"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "Aceite LUBRAX TURBO 40 12x1L",
+  "Precio": 42684,
+  "Marca": ""Lubrax"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "Aceite LUBRAX ESS. SL 20W/50 12x1L",
+  "Precio": 43407,
+  "Marca": ""Lubrax"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "Aceite LUBRAX ESSENCIAL SF 40 12x1L",
+  "Precio": 44140,
+  "Marca": ""Lubrax"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "Aceite LUBRAX GL-5 80W/90 12x1L",
+  "Precio": 44440,
+  "Marca": ""Lubrax"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "Aceite LUBRAX ESS. SL 15W/40 1L (Caja 12 Unidades)",
+  "Precio": 44639,
+  "Marca": ""Lubrax"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "REFRIG. P/RAD. LUBRAX PC-2 MAGENTA 6X4L",
+  "Precio": 49467,
+  "Marca": ""Lubrax"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "REFRIG. P/RAD. LUBRAX PC-2 AZUL 6X4L",
+  "Precio": 48138,
+  "Marca": ""Lubrax"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "REFRIG. P/RAD. LUBRAX PC-2 VERDE 6X4L",
+  "Precio": 49769,
+  "Marca": ""Lubrax"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "Aceite LUBRAX TECNO 10W/40 1L (Caja 12 Unidades)",
+  "Precio": 50688,
+  "Marca": ""Lubrax"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "Grasa LUBRAX AUTOLITH 2 12x0,5kg",
+  "Precio": 32079,
+  "Marca": ""Lubrax"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "TOTAL QUARTZ INEO MC3 5W30 5L   CL (Caja 3 Unidades)",
+  "Precio": 156000,
+  "Marca": ""TOTAL"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "Refrig. p/rad. LUBRAX HD-2 L. 6x4L",
+  "Precio": 71354,
+  "Marca": ""Lubrax"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "Grasa LUBRAX AUTOLITH 2 6x2,5kg",
+  "Precio": 71960,
+  "Marca": ""Lubrax"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "Aceite LUBRAX ATF TDX 12x1L",
+  "Precio": 42263,
+  "Marca": ""Lubrax"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "Aceite LUBRAX ATF TDX 6x4L",
+  "Precio": 80580,
+  "Marca": ""Lubrax"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "MOBIL ATF D/M 4LT",
+  "Precio": 9999999999,
+  "Marca": ""Mobil"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "MOBILUBE HD PLUS 85W-140, 4LT (Caja 4 Unidades)",
+  "Precio": 9999999999,
+  "Marca": ""Mobil"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "MOBIL ATF 220, 1LT (Caja x 12 Unidades)",
+  "Precio": 52000,
+  "Marca": ""Mobil"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "MOBIL DELVAC 1300 SUPER 15W-40, 4LT (Caja 4 Unidades)",
+  "Precio": 0,
+  "Marca": ""Mobil"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "MOBIL DELVAC SUPER 1200 F2 15W-40, 4LT (Caja 4 Unidades)",
+  "Precio": 9999999999,
+  "Marca": ""Mobil"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "MOBIL ATF 220, 4LT",
+  "Precio": 64000,
+  "Marca": ""Mobil"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "COOLANT COPEC, 5LT*4UN",
+  "Precio": 24164,
+  "Marca": ""Mobil"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "MOBIL PERMAZONE READY TO USE, 1LT*12UN",
+  "Precio": 36161,
+  "Marca": ""Mobil"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "MOBIL SUPER 2T, 1LT (Caja 12 Unidades)",
+  "Precio": 37110,
+  "Marca": ""Mobil"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "MOBILGREASE XHP 222, 390GR (Caja 10 Unidades)",
+  "Precio": 40000,
+  "Marca": ""Mobil"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "MOBILUBE HD PLUS 80W-90, 1LT*12UN",
+  "Precio": 46667,
+  "Marca": ""Mobil"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "MOBIL BRAKE FLUID DOT-4, 355CC",
+  "Precio": 49755,
+  "Marca": ""Mobil"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "MOBIL SPECIAL 20W-50, 4LT",
+  "Precio": 51271,
+  "Marca": ""Mobil"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "MOBIL SPECIAL 10W-40, 4LT (Caja 4 Unidades)",
+  "Precio": 73000,
+  "Marca": ""Mobil"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "MOBIL ATF 220, 4LT (Caja 4 Unidades)",
+  "Precio": 66528,
+  "Marca": ""Mobil"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "DESENGRASANTE BIODEGRADABLE, 4LT",
+  "Precio": 55664,
+  "Marca": ""Mobil"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "MOBIL MOTOR OIL 50, 4LT",
+  "Precio": 57961,
+  "Marca": ""Mobil"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "MOBIL BRAKE FLUID DOT-4, 1LT (Caja 12 Unidades)",
+  "Precio": 59454,
+  "Marca": ""Mobil"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "MOBILUBE HD PLUS 80W-90, 4LT*4UN",
+  "Precio": 61205,
+  "Marca": ""Mobil"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "MOBIL SPECIAL 20W-50, 4LT*4UN",
+  "Precio": 63711,
+  "Marca": ""Mobil"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "MOBIL DELVAC SUPER 1200 F2 15W-40, 4LT (Caja 4 Unidades)",
+  "Precio": 64685,
+  "Marca": ""Mobil"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "MOBIL SUPER 1000 20W-50, 4LT*4UN",
+  "Precio": 64852,
+  "Marca": ""Mobil"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "MOBILUBE HD PLUS 85W-140, 4LT (Caja 4 Unidades)",
+  "Precio": 66025,
+  "Marca": ""Mobil"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "MOBILUBE HD PLUS 85W-140, 4LT (Caja 4 Unidades)",
+  "Precio": 66025,
+  "Marca": ""Mobil"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "MOBIL DELVAC 1330, 4LT",
+  "Precio": 66226,
+  "Marca": ""Mobil"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "MOBIL DELVAC 1340, 4LT",
+  "Precio": 66226,
+  "Marca": ""Mobil"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "MOBIL DELVAC 1340, 4LT",
+  "Precio": 66226,
+  "Marca": ""Mobil"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "MOBIL DELVAC 1330, 4LT",
+  "Precio": 66226,
+  "Marca": ""Mobil"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "MOBIL SUPER 1000 X1 10W-30, 1LT (Caja 12 Unidades)",
+  "Precio": 67586,
+  "Marca": ""Mobil"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "MOBIL DELVAC SUPER 20W-50, 4LT*4UN",
+  "Precio": 68331,
+  "Marca": ""Mobil"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "MOBIL DELVAC MX 15W-40, 4LT (Caja 4 Unidades)",
+  "Precio": 69237,
+  "Marca": ""Mobil"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "MOBIL DELVAC SUPER 1200 F2 15W-40, 4LT (Caja 4 Unidades)",
+  "Precio": 70578,
+  "Marca": ""Mobil"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "MOBIL DELVAC 1300 SUPER 15W-40, 4LT (Caja 4 Unidades)",
+  "Precio": 72159,
+  "Marca": ""Mobil"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "MOBIL SPECIAL 10W-40, 4LT (Caja 4 Unidades)",
+  "Precio": 73000,
+  "Marca": ""Mobil"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "MOBIL 1 5W-30, 1/4GL",
+  "Precio": 72901,
+  "Marca": ""Mobil"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "MOBIL DELVAC EXTENDED LIFE C 50%, 4LT",
+  "Precio": 76022,
+  "Marca": ""Mobil"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "MOBIL DELVAC EXTENDED LIFE C 50%, 4LT*UN",
+  "Precio": 76023,
+  "Marca": ""Mobil"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "MOBIL SUPER 1000 CNG 20W-50, 4LT",
+  "Precio": 76595,
+  "Marca": ""Mobil"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "MOBIL SUPER 1000 X1 10W-30, 4 LT*4UN",
+  "Precio": 76595,
+  "Marca": ""Mobil"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "MOBIL SUPER 1000 X3 15W-40, 4LT (Caja 4 Unidades)",
+  "Precio": 76595,
+  "Marca": ""Mobil"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "MOBIL OUTBOARD PLUS, 1LT*12UN",
+  "Precio": 78081,
+  "Marca": ""Mobil"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "MOBIL DELVAC MX 15W-40, 4LT (Caja 4 Unidades)",
+  "Precio": 78607,
+  "Marca": ""Mobil"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "MOBIL DELVAC 1300 SUPER 15W-40, 4LT (Caja 4 Unidades)",
+  "Precio": 78732,
+  "Marca": ""Mobil"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "MOBIL SUPER 2000 FORMULA P 10W-40, 1LT (Caja 12 Unidades)",
+  "Precio": 79353,
+  "Marca": ""Mobil"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "MOBIL SUPER 1000 20W-50, 4LT",
+  "Precio": 83811,
+  "Marca": ""Mobil"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "MOBIL ATF D/M 4LT",
+  "Precio": 96056,
+  "Marca": ""Mobil"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "MOBIL ATF D/M 4LT",
+  "Precio": 96056,
+  "Marca": ""Mobil"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "MOBIL SUPER 3000 XE 5W-30, 1LT (Caja 12 Unidades)",
+  "Precio": 117593,
+  "Marca": ""Mobil"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "MOBIL SUPER 3000 X2 5W-40, 4LT (Caja 4 Unidades)",
+  "Precio": 125000,
+  "Marca": ""Mobil"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "MOBIL SUPER 3000 5W-30, 4LT (Caja 4 Unidades)",
+  "Precio": 125000,
+  "Marca": "N/A",
+  "Formato": "caja"
+},
+{
+  "Nombre": "MOBIL SUPER 3000 XE4 5W-30, 4LT (Caja 4 Unidades)",
+  "Precio": 125000,
+  "Marca": ""Mobil"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "MOBIL SUPER 3000 5W-30, 4LT (Caja 4 Unidades)",
+  "Precio": 125000,
+  "Marca": ""Mobil"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "MOBIL CENTAUR MOLY 2, 400GR",
+  "Precio": 130077,
+  "Marca": ""Mobil"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "MOBIL 1 ESP 5W-30, 4LT (Caja 4 Unidades)",
+  "Precio": 165769,
+  "Marca": ""Mobil"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "MOBILITH SHC 220, 380 GR. (Caja x 10 unidades)",
+  "Precio": 170644,
+  "Marca": ""Mobil"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "MOBIL 1 5W-30, 5/4GL (3 unidades)",
+  "Precio": 181477,
+  "Marca": ""Mobil"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "MOBIL 1 FS X2 5W-50, 4LT (Caja 6 Unidades)",
+  "Precio": 197604,
+  "Marca": ""Mobil"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "MOBIL DELVAC 1 ESP 5W-40, 4LT (Caja 4 Unidades)",
+  "Precio": 210029,
+  "Marca": ""Mobil"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "MOBIL SHC PF 462, 12X28OZ CARTRIDGE",
+  "Precio": 2019597,
+  "Marca": ""Mobil"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "Rimula R3 Turbo 15W40 1L (Caja 12 Unidades)",
+  "Precio": 0,
+  "Marca": ""Shell"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "Rimula R3 Turbo 15W40 4L (Caja 3 Unidades)",
+  "Precio": 0,
+  "Marca": ""Shell"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "Spirax S2 A 80W-90 6X1L",
+  "Precio": 43056,
+  "Marca": ""Shell"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "Rimula R4 X 15W40 1L (Caja 6 Unidades)",
+  "Precio": 45648,
+  "Marca": ""Shell"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "MOBIL SUPER 3000 XE 5W-30, 4LT (Caja 4 Unidades)",
+  "Precio": 125000,
+  "Marca": ""Mobil"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "Spirax S2 ATF D2 6X1L",
+  "Precio": 53331,
+  "Marca": ""Shell"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "Rimula R4 L 15W40 1L (Caja 6 Unidades)",
+  "Precio": 53424,
+  "Marca": ""Shell"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "Rimula R2 30 (CF/10TBN) 3x4 L",
+  "Precio": 56016,
+  "Marca": ""Shell"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "Rimula R2 40 (CF/10TBN) 3x4L",
+  "Precio": 56016,
+  "Marca": ""Shell"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "Rimula R2 50 (CF/10TBN) 3x4L",
+  "Precio": 56016,
+  "Marca": ""Shell"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "Rimula R2 40 (CF/10TBN)/12x1",
+  "Precio": 61056,
+  "Marca": ""Shell"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "Helix HX5 SN 20W50 3X4LT",
+  "Precio": 63788,
+  "Marca": ""Shell"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "Spirax S5 ATF X 6X1L",
+  "Precio": 75528,
+  "Marca": ""Shell"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "Rimula R4 L 15W40 4L (Caja 3 Unidades)",
+  "Precio": 80143,
+  "Marca": ""Shell"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "Spirax S2 A 80W-90  3x4L",
+  "Precio": 80942,
+  "Marca": ""Shell"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "Rimula R4 X 15W-40 4L (Caja 3 Unidades)",
+  "Precio": 81360,
+  "Marca": ""Shell"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "Helix HX7 SP 10W40 1LT (Caja 6 Unidades)",
+  "Precio": 81540,
+  "Marca": ""Shell"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "Nautilus Prem Outboard 6x1/4",
+  "Precio": 82643,
+  "Marca": ""Shell"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "Rimula R4 X 15W-40 9,46L (Caja 2 Unidades)",
+  "Precio": 95465,
+  "Marca": ""Shell"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "SHELL Rimula R5 LE 10W40  4L (Caja 3 Unidades)",
+  "Precio": 98000,
+  "Marca": ""Shell"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "Spirax S2 ATF D2 3x4L",
+  "Precio": 103107,
+  "Marca": ""Shell"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "Aeroshell W 100 6X1/4",
+  "Precio": 107730,
+  "Marca": ""Shell"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "Rimula R5 LE 10W-30 4L (Caja 3 Unidades)",
+  "Precio": 110949,
+  "Marca": ""Shell"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "Helix HX8 Pro AG 5W30 1L (Caja 6 Unidades)",
+  "Precio": 112586,
+  "Marca": ""Shell"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "Aeroshell W 15W50 1/4 (Caja 6 Unidades)",
+  "Precio": 114477,
+  "Marca": ""Shell"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "Advance 4T AX7 15W-50 11L (Caja 12 Unidades)",
+  "Precio": 115975,
+  "Marca": ""Shell"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "Helix HX8 Pro AG 5W30 4L (Caja 3 Unidades)",
+  "Precio": 138000,
+  "Marca": ""Shell"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "Gadus S2 V220 2 12X1K",
+  "Precio": 139711,
+  "Marca": ""Shell"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "Spirax S5 ATF X 12x1/4",
+  "Precio": 142899,
+  "Marca": ""Shell"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "AEROSHELL 100 12X1/4",
+  "Precio": 187389,
+  "Marca": ""Shell"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "Gadus S2 V220 2  10X0,4KG",
+  "Precio": 228567,
+  "Marca": ""Shell"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "Spirax S6 AXME 75W90 1L (Caja 12 Unidades)",
+  "Precio": 258514,
+  "Marca": ""Shell"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "SHELL Rimula R6 LM 10W40 4L (Caja 4 Unidades)",
+  "Precio": 265000,
+  "Marca": ""Shell"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "Aeroshell Fluid 41 6X1 AG",
+  "Precio": 618445,
+  "Marca": ""Shell"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "Gadus S5 T460 1.5 12X0.4KG",
+  "Precio": 972415,
+  "Marca": ""Shell"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "Rhenus OTR 47 Spray 12x0,5L",
+  "Precio": 1343996,
+  "Marca": ""Shell"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "Rhenus Rotanor KSP 12x0,5L",
+  "Precio": 1532589,
+  "Marca": ""Shell"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "Rhenus OCS 36 Spray 12x0,5L",
+  "Precio": 3028851,
+  "Marca": ""Shell"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "QUARTZ 5000FUT.XT 10W30  3B4L   TOT   CL",
+  "Precio": 61800,
+  "Marca": ""Total"",
+  "Formato": "caja"
+},
+{
+  "Nombre": "TOTAL NEVASTANE LUBE AEROSOL 0.3Lts C (Caja 12 Unidades",
+  "Precio": 130000,
+  "Marca": ""Total"",
+  "Formato": "caja"
+},
