@@ -170,6 +170,11 @@ def create_data_files():
                 format = "caja"
         else:
             format = "otro"
+        #replace all " in strings with '
+        name = name.replace("\"", "")
+        brand = brand.replace("\"", "")
+        format = format.replace("\"", "")
+
         #print (value)
         product_string += "  \"Nombre\": \"" + name + "\",\n"
         product_string += "  \"Precio\": " + str(value) + ",\n"

@@ -8,7 +8,7 @@ openai.api_key = os.getenv("OPENAI_API_KEY")
 
 
 def extract_products(messages):
-    input_messages=[ {"role": "system", "content": "Eres un asistente que convierte solicitudes de productos en un formato estructurado. El formato sera un JSON con el nombre de los productos y la cantidad de cada uno. Por ejemplo, si la solicitud es 'necesito 5 tambores de nuto 68', el formato estructurado seria {'products': [{'product': 'nuto 68', 'quantity': 5}]}."}      ]
+    input_messages=[ {"role": "system", "content": "Eres un asistente que convierte solicitudes de productos en un formato estructurado. El formato sera un JSON con el nombre de los productos , el formato y la cantidad de cada uno. Por ejemplo, si la solicitud es 'necesito 5 tambores de nuto 68', el formato estructurado seria {'products': [{'product': 'nuto 68','format': 'tambor', 'quantity': 5}]}. Los posibles formatos son Balde, Tambor, Caja o desconosido"}      ]
 
     input_messages.extend([{"role": "user", "content": message} for message in messages])
 

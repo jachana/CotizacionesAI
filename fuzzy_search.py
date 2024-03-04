@@ -1,6 +1,7 @@
 import os
 import fuzzywuzzy
 import re
+import json
 
 from fuzzywuzzy import process
 from fuzzywuzzy import fuzz
@@ -33,21 +34,7 @@ def search_proper_name(query):
     for line in file:
         split_line = line.split(";")
         products.append(split_line[0])
-    # The search query
 
-    # def test():
-
-    #     # Find the best match for the query in the list of products
-    #     best_match = process.extractOne(query, products)
-
-    #     print(f"Best match for '{query}': {best_match[0]} with a score of {best_match[1]}")
-
-    #     # Find the top 3 matches for the query
-    #     matches = process.extract(query, products, limit=30)
-
-    #     print(f"Top matches for '{query}':")
-    #     for match in matches:
-    #         print(f"{match[0]} with a score of {match[1]}")
 
     scores = [(product, custom_score(query, product)) for product in products]
     best_match = max(scores, key=lambda x: x[1])
@@ -61,37 +48,44 @@ def search_proper_name(query):
     print(f"Best match for '{query}': {best_match[0]} with a score of {best_match[1]}")
     return best_match[0]
 
-def search_alternatives(query, amount):
-    file = open("tambores.csv", "r")
+def search_alternatives(query, format, amount):
+   
+    #first determine which file to open
+    files_to_open = []
+    if format == "tambor":
+        files_to_open.append("tambores.json")
+    elif format == "balde":
+        files_to_open.append("baldes.json")
+    elif format == "caja":
+        files_to_open.append("cajas.json")
+    else:
+        files_to_open.append("tambores.json")
+        files_to_open.append("baldes.json")
+        files_to_open.append("cajas.json")
+        files_to_open.append("otros.json")
+
+    #now get all the products
     products = []
+    print(files_to_open)
 
-    for line in file:
-        split_line = line.split(";")
-        products.append(split_line[0])
-    # The search query
+    for file_name in files_to_open:
+        file = open(file_name, "r")
 
-    # def test():
+        products_json_string = file.read()
 
-    #     # Find the best match for the query in the list of products
-    #     best_match = process.extractOne(query, products)
+        products_json = json.loads(products_json_string)
 
-    #     print(f"Best match for '{query}': {best_match[0]} with a score of {best_match[1]}")
+        products += [product['Nombre'] for product in products_json]
 
-    #     # Find the top 3 matches for the query
-    #     matches = process.extract(query, products, limit=30)
-
-    #     print(f"Top matches for '{query}':")
-    #     for match in matches:
-    #         print(f"{match[0]} with a score of {match[1]}")
 
     scores = [(product, custom_score(query, product)) for product in products]
+    #print(scores)
     best_match = max(scores, key=lambda x: x[1])
 
     #get the best 30 scores
     best_scores = sorted(scores, key=lambda x: x[1], reverse=True)[:30]
 
-    for product, score in best_scores:
-        #print(f"{product} with a score of {score}")
-        pass
-    print(f"Best match for '{query}': {best_match[0]} with a score of {best_match[1]}")
+    for product, score in best_scores[:amount]:
+        print(f"{product} with a score of {score}")
+
     return best_match[:amount]
