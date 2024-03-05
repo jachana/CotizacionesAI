@@ -19,7 +19,7 @@ def get_boards_structure():
 
 #get the board structure,column names and types
 def get_board_structure(board_id):
-    query = 'query {  boards(ids: ' + str(board_id) + ') {    name    columns {      title         }  }}'
+    query = 'query {  boards(ids: ' + str(board_id) + ') {    name    columns {      title   id       }  }}'
     print(query)
     url = 'https://api.monday.com/v2'
     headers = {'Authorization': monday_api_key}
@@ -33,7 +33,7 @@ def get_board_data(board_id):
   #here I might have to use pagination to get all the data
     #first I should get the biggest page size possible
     productsList = []
-    columns_request = 'items{ name column_values(ids:["precio_venta","formato","marca"]){id value}}'
+    columns_request = 'items{ name column_values(ids:["precio_venta" "formato" "marca" "tipo8"]){id value}}'
     page_size = 500
     #get the first page
     query = 'query {  boards(ids: ' + str(board_id) + ') { id items_page(limit: '+str(page_size)+'){ '+columns_request+' cursor  } items_count  }}'
@@ -45,7 +45,6 @@ def get_board_data(board_id):
     # now I should get the next pages if there are any
     #first check if there are more pages
     response_json = response.json()
-    #print(response_json)
     #print( response_json)
     items_count = response_json['data']['boards'][0]['items_count']
     print("items_count == " + str(items_count))
@@ -56,13 +55,14 @@ def get_board_data(board_id):
         name = item['name']
         price = item['column_values'][1]['value']
         brand = item['column_values'][0]['value']
+        product_type = item['column_values'][3]['value']
         if(brand == None):
             brand = "N/A"
         format = item['column_values'][2]['value']
         if format == None:
             format = "0"
 
-        productsList.append((name ,brand, price,format))
+        productsList.append((name ,brand, price,format, product_type))
     #TODO
         #I NEEED TO MATCH THE NAME BRAND BVALUE AND FORMAT TO THE CORRECT COLUMN NAMES
     if items_count > items_requested:
@@ -89,7 +89,8 @@ def get_board_data(board_id):
                 format = item['column_values'][2]['value']
                 if format == None:
                     format = "0"
-                productsList.append((name , brand, value,format))
+                product_type = item['column_values'][3]['value']
+                productsList.append((name , brand, value,format,product_type))
             if(cursor == None):
                 break
             print("cursor == " + cursor)
@@ -128,13 +129,19 @@ def create_data_files():
     #Get the board data
     board_data = get_board_data(products_board_id)
     #print(board_data)
+    #define the file naemes
+    tambores_file_name = "tambores.json"
+    baldes_file_name = "baldes.json"
+    cajas_file_name = "cajas.json"
+    otros_file_name = "otros.json"
 
-    tambores_file = open("tambores.json", "w")
-    baldes_file = open("baldes.json", "w")
-    cajas_file = open("cajas.json", "w")
-    otros_file = open("otros.json", "w")
+    tambores_file = open(tambores_file_name, "w")
+    baldes_file = open(baldes_file_name, "w")
+    cajas_file = open(cajas_file_name, "w")
+    otros_file = open(otros_file_name, "w")
+
     sum = 0
-    # #write headers 
+    # #write headers
     # tambores_file.write("Nombre ; Precio ; Marca ; Formato\n")
     # baldes_file.write("Nombre ; Precio ; Marca ; Formato\n")
     # cajas_file.write("Nombre ; Precio ; Marca ; Formato\n")
@@ -170,16 +177,22 @@ def create_data_files():
                 format = "caja"
         else:
             format = "otro"
+
+        product_type = product[4]
+        if product_type == None:
+            product_type = "N/A"
         #replace all " in strings with '
         name = name.replace("\"", "")
         brand = brand.replace("\"", "")
         format = format.replace("\"", "")
+        product_type = product_type.replace("\"", "")
 
         #print (value)
         product_string += "  \"Nombre\": \"" + name + "\",\n"
         product_string += "  \"Precio\": " + str(value) + ",\n"
         product_string += "  \"Marca\": \"" + brand + "\",\n"
-        product_string += "  \"Formato\": \"" + format + "\"\n"
+        product_string += "  \"Formato\": \"" + format + "\",\n"
+        product_string += "  \"Tipo\": \"" + product_type + "\"\n"
         product_string += "},\n"
         if format == "tambor":
             tambores_file.write(product_string)
@@ -191,6 +204,12 @@ def create_data_files():
             otros_file.write(product_string)
 
         sum += int(value)
+    #remove the last comma
+    tambores_file.seek(tambores_file.tell() - 3, 0)
+    baldes_file.seek(baldes_file.tell() - 3, 0)
+    cajas_file.seek(cajas_file.tell() - 3, 0)
+    otros_file.seek(otros_file.tell() - 3, 0)
+    # close the JSON array
     tambores_file.write("]\n")
     baldes_file.write("]\n")
     cajas_file.write("]\n")
@@ -203,4 +222,4 @@ def create_data_files():
     otros_file.close()
     print("The sum of all the items is " + str(sum))
 
-    return ["tambores", "baldes", "cajas", "otros"]
+    return [tambores_file_name, cajas_file_name, baldes_file_name, otros_file_name]

@@ -26,37 +26,17 @@ def custom_score(query, candidate):
     final_score = 0.7 * base_score + 0.3 * numeric_score
     return final_score
 
-def search_proper_name(query):
-    #open the file
-    file = open("tambores.csv", "r")
-    products = []
 
-    for line in file:
-        split_line = line.split(";")
-        products.append(split_line[0])
+def search_proper_name(query, product_format, viscosity=None, brand=None, product_type=None):
 
-
-    scores = [(product, custom_score(query, product)) for product in products]
-    best_match = max(scores, key=lambda x: x[1])
-
-    #get the best 30 scores
-    best_scores = sorted(scores, key=lambda x: x[1], reverse=True)[:30]
-
-    for product, score in best_scores:
-        #print(f"{product} with a score of {score}")
-        pass
-    print(f"Best match for '{query}': {best_match[0]} with a score of {best_match[1]}")
-    return best_match[0]
-
-def search_alternatives(query, format, amount):
-   
     #first determine which file to open
     files_to_open = []
-    if format == "tambor":
+    product_format = product_format.lower()
+    if product_format == "tambor":
         files_to_open.append("tambores.json")
-    elif format == "balde":
+    elif product_format == "balde":
         files_to_open.append("baldes.json")
-    elif format == "caja":
+    elif product_format == "caja":
         files_to_open.append("cajas.json")
     else:
         files_to_open.append("tambores.json")
@@ -66,26 +46,49 @@ def search_alternatives(query, format, amount):
 
     #now get all the products
     products = []
-    print(files_to_open)
+    product_names = []
+    print("buscando en " + str(files_to_open))
+
 
     for file_name in files_to_open:
         file = open(file_name, "r")
 
         products_json_string = file.read()
-
         products_json = json.loads(products_json_string)
 
-        products += [product['Nombre'] for product in products_json]
+        product_names+= [product['Nombre'] for product in products_json]
+        #add all the products to the list as an array
+        products += [(product['Nombre'], product['Precio'], product['Marca'], product['Formato'], product['Tipo']) for product in products_json]
 
+    #filter the products by viscosity  and brand if needed
+    if viscosity:
+        products = [product for product in products if product[4] == viscosity]
+    if brand:
+        products = [product for product in products if product[2] == brand]
+    if product_type:
+        products = [product for product in products if product[5] == product_type]
 
-    scores = [(product, custom_score(query, product)) for product in products]
+    #remove from the product names the ones that are not in the products list
+    product_names = [product for product in product_names if product in [product[0] for product in products]]
+
+    scores = [(product, custom_score(query, product)) for product in product_names]
     #print(scores)
     best_match = max(scores, key=lambda x: x[1])
 
-    #get the best 30 scores
-    best_scores = sorted(scores, key=lambda x: x[1], reverse=True)[:30]
+    #get the best 3 scores
+    scores_to_get = min(3, len(scores))
+    best_scores = sorted(scores, key=lambda x: x[1], reverse=True)[:scores_to_get]
 
-    for product, score in best_scores[:amount]:
-        print(f"{product} with a score of {score}")
 
-    return best_match[:amount]
+    #find the best match on the products using the name
+    best_product_match = None
+    for product in products:
+        if product[0] == best_match[0]:
+            best_product_match = product
+            break
+
+    # for product, score in best_scores:
+    #     print(f"{product} with a score of {score}")
+
+    print (f"Best match: {best_product_match} with a score of {best_match[1]}")
+    return best_product_match
