@@ -33,17 +33,47 @@ def process_text(text):
     return text.upper()
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=False)
 
 def make_html(cotizacion, total):
-    html = "<h1>Cotizacion</h1>"
-    for product in cotizacion:
-        html += "<p>Producto: " + product[0] + "</p>"
-        html += "<p>Precio unitario: " + str(product[1]) + "</p>"
-        html += "<p>Cantidad: " + str(product[2]) + "</p>"
-        html += "<p>Precio total: " + str(product[3]) + "</p>"
-    html += "<p>Total: " + str(total) + "</p>"
-    return html
+    # Sample data in the specified format
+    products = cotizacion
+
+    # Start of the HTML table, defining the headers
+    html_table = """
+    <table border="1">
+        <tr>
+            <th>Product Name</th>
+            <th>Unit Price</th>
+            <th>Product Quantity</th>
+            <th>Total Price</th>
+        </tr>
+    """
+
+    # Adding each product's details to the table
+    for product in products:
+        html_table += f"""
+        <tr>
+            <td>{product[0]}</td>
+            <td>{product[1]}</td>
+            <td>{product[2]}</td>
+            <td>{product[3]}</td>
+        </tr>
+        """
+    html_table += f"""
+        <tr>
+            <td>Total</td>
+            <td></td>
+            <td></td>
+            <td>{total}</td>
+        </tr>
+        """
+    # Closing the table
+    html_table += "</table>"
+
+    print(html_table)
+    return html_table
+
 
 def find_alternatives(message):
     products = extract_products.extract_products([message])
@@ -87,9 +117,7 @@ def find_alternatives(message):
         total += product[3]
     print("Cotizacion: " + str(cotizacion))
     print("Total: " + str(total))
-    html_cotizacion = make_html(cotizacion, total)
-    print("html: " + html_cotizacion)
-    return html_cotizacion, total
+    return cotizacion, total
 
 def test_extract_products():
     test_messages = ["necesito 5 tambores de nuto 68", "cotiza 2 baldes de morbilux ep 0",  "2 tambores de 5w30" , " 3 tambores de 20w50 y dos cajas de turbo 40", "cotiza 4 baldes de mobiltherm","cotizame un tambor de 20w50 lubrax","dos tambores de hydra xp 46 , 2 de tellus mx 46, 2 de azolla 46 y dos dte 26","una grasa de mobilux ep 2 y una grasa lubrax lith ep 2 en baldes" ]
