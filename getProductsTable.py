@@ -205,10 +205,10 @@ def create_data_files():
 
         sum += int(value)
     #remove the last comma
-    tambores_file.seek(tambores_file.tell() - 3, 0)
-    baldes_file.seek(baldes_file.tell() - 3, 0)
-    cajas_file.seek(cajas_file.tell() - 3, 0)
-    otros_file.seek(otros_file.tell() - 3, 0)
+    # tambores_file.seek(tambores_file.tell() - 3, 0)
+    # baldes_file.seek(baldes_file.tell() - 3, 0)
+    # cajas_file.seek(cajas_file.tell() - 3, 0)
+    # otros_file.seek(otros_file.tell() - 3, 0)
     # close the JSON array
     tambores_file.write("\n]\n")
     baldes_file.write("\n]\n")
