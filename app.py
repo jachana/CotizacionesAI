@@ -42,4 +42,3 @@ if len(st.session_state.messages)>0:
         st.rerun()
     if st.button("Enviar Cotizacion", type="primary"):
         st.markdown("cotizacion enviada")
-        st.rerun()
