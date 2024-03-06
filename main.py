@@ -19,8 +19,6 @@ def make_markdown_table(cotizacion, total):
 
 def find_alternatives(message):
     products = extract_products.extract_products([message])
-    print(message)
-    print("---")
     cotizacion = []
     for product in products:
         product_base_name = product['product']
@@ -39,21 +37,14 @@ def find_alternatives(message):
             product_type = product['type']
         else:
             product_type = None
-        print("producto: " + product_base_name)
-        print("formato: " + product_format)
-        print("cantidad: " + str(product_quantity))
-        print("viscosidad: " + str(product_viscosity))
-        print("marca: " + str(product_brand))
-        print("tipo: " + str(product_type))
+
 
         product = fuzzy_search.search_proper_name(product_base_name, product_format, product_viscosity, product_brand, product_type)
-        #print("best: " + str(product_name))
         product_name = product[0]
         unit_price = product[1]
         total_price = product_quantity * unit_price
 
         cotizacion.append((product_name, unit_price, product_quantity, total_price))
-        print("\n")
     total = 0
     for product in cotizacion:
         total += product[3]

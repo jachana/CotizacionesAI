@@ -26,7 +26,6 @@ def extract_products(messages):
 
     #parse the json response
     response_content = response_content.replace("'", "\"")
-    print(response_content)
     response_content = json.loads(response_content)
 
     products = response_content['products']
