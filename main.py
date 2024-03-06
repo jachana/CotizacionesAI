@@ -18,6 +18,7 @@ def make_markdown_table(cotizacion, total):
     return table
 
 def find_alternatives(message):
+    getProductsTable.create_data_files()
     products = extract_products.extract_products([message])
     print(message)
     print("---")
