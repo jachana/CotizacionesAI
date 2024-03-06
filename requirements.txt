@@ -3,3 +3,4 @@ fuzzywuzzy
 streamlit
 pandas
 python-Levenshtein
+json
