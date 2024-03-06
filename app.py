@@ -18,7 +18,7 @@ if "openai_model" not in st.session_state:
 
 if "messages" not in st.session_state:
     st.session_state.messages = []
-st.markdown("test")
+
 for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
@@ -36,8 +36,10 @@ if prompt := st.chat_input("Que productos quiere cotizar"):
         
 
     st.session_state.messages.append({"role": "assistant", "content": response})
-if st.button("Reset", type="primary"):
-    del st.session_state.messages
-    st.markdown("reseting")
-    st.write("writing")
-    st.rerun()
+if len(st.session_state.messages)>0:
+    if st.button("Reset", type="primary"):
+        del st.session_state.messages
+        st.rerun()
+    if st.button("Enviar Cotizacion", type="primary"):
+        st.markdown("cotizacion enviada")
+        st.rerun()
