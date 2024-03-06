@@ -484,7 +484,7 @@
 },
 {
   "Nombre": "MOBILGREASE XHP 222, 390GR (Caja 10 Unidades)",
-  "Precio": 40000,
+  "Precio": 39500,
   "Marca": "Mobil",
   "Formato": "caja",
   "Tipo": "{index:2,post_id:null}"
@@ -764,7 +764,7 @@
 },
 {
   "Nombre": "MOBIL SUPER 3000 XE 5W-30, 1LT (Caja 12 Unidades)",
-  "Precio": 117593,
+  "Precio": 126000,
   "Marca": "Mobil",
   "Formato": "caja",
   "Tipo": "N/A"
@@ -785,7 +785,7 @@
 },
 {
   "Nombre": "MOBIL SUPER 3000 XE4 5W-30, 4LT (Caja 4 Unidades)",
-  "Precio": 125000,
+  "Precio": 128000,
   "Marca": "Mobil",
   "Formato": "caja",
   "Tipo": "{index:101,post_id:null,changed_at:2024-02-27T16:41:03.739Z}"
@@ -1132,4 +1132,5 @@
   "Marca": "Total",
   "Formato": "caja",
   "Tipo": "N/A"
-}]
+}
+]

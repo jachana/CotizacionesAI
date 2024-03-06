@@ -798,7 +798,7 @@
   "Tipo": "N/A"
 },
 {
-  "Nombre": "DESMOLDANTE N∞ 6, 208LT",
+  "Nombre": "DESMOLDANTE N¬∞ 6, 208LT",
   "Precio": 581105,
   "Marca": "Mobil",
   "Formato": "tambor",
@@ -1309,14 +1309,14 @@
   "Tipo": "N/A"
 },
 {
-  "Nombre": "MOBIL VACTRA OIL N∞ 2, 208LT",
+  "Nombre": "MOBIL VACTRA OIL N¬∞ 2, 208LT",
   "Precio": 734085,
   "Marca": "Mobil",
   "Formato": "tambor",
   "Tipo": "{index:11,post_id:null}"
 },
 {
-  "Nombre": "MOBIL VACTRA OIL N∞ 4, 208LT",
+  "Nombre": "MOBIL VACTRA OIL N¬∞ 4, 208LT",
   "Precio": 734085,
   "Marca": "Mobil",
   "Formato": "tambor",
@@ -1789,7 +1789,7 @@
   "Precio": 1037256,
   "Marca": "Mobil",
   "Formato": "tambor",
-  "Tipo": "N/A"
+  "Tipo": "{index:1,post_id:null,changed_at:2024-03-05T15:42:02.436Z}"
 },
 {
   "Nombre": "MOBILGREASE XHP 222, 181KG",
@@ -3983,7 +3983,7 @@
   "Tipo": "N/A"
 },
 {
-  "Nombre": "Desengrasante DielÈctrico Anticorrosivo DESDIEL 41 208lts",
+  "Nombre": "Desengrasante Diel√©ctrico Anticorrosivo DESDIEL 41 208lts",
   "Precio": 625000,
   "Marca": "REINGER",
   "Formato": "tambor",
@@ -3997,7 +3997,7 @@
   "Tipo": "N/A"
 },
 {
-  "Nombre": "TAMBOR 208 LTS VACÕO",
+  "Nombre": "TAMBOR 208 LTS VAC√çO",
   "Precio": 6000,
   "Marca": "N/A",
   "Formato": "tambor",
@@ -4011,7 +4011,7 @@
   "Tipo": "{index:2,post_id:null,changed_at:2024-02-13T20:16:16.858Z}"
 },
 {
-  "Nombre": "Desengrasante DielÈctrico Anticorrosivo DESDIEL 41 20lts",
+  "Nombre": "Desengrasante Diel√©ctrico Anticorrosivo DESDIEL 41 20lts",
   "Precio": 66500,
   "Marca": "REINGER",
   "Formato": "tambor",
@@ -4027,7 +4027,8 @@
 {
   "Nombre": "PRO EMULSIFICANTE 208 L",
   "Precio": 558600,
-  "Marca": "BaÒados",
+  "Marca": "Ba√±ados",
   "Formato": "tambor",
   "Tipo": "N/A"
-}]
+}
+]

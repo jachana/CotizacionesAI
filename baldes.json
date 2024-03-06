@@ -155,7 +155,7 @@
 },
 {
   "Nombre": "Aceite LUBRAX GOLD 75W/90 B.20L",
-  "Precio": 189493,
+  "Precio": 190000,
   "Marca": "Lubrax",
   "Formato": "balde",
   "Tipo": "N/A"
@@ -665,7 +665,7 @@
   "Tipo": "{index:0,post_id:null}"
 },
 {
-  "Nombre": "NUTO H 68, 19LT",
+  "Nombre": "MOBIL NUTO H 68, 19LT",
   "Precio": 45000,
   "Marca": "Mobil",
   "Formato": "balde",
@@ -883,7 +883,7 @@
 },
 {
   "Nombre": "MOBIL DTE 26 Ultra, 19LT",
-  "Precio": 65289,
+  "Precio": 59000,
   "Marca": "Mobil",
   "Formato": "balde",
   "Tipo": "{index:0,post_id:null}"
@@ -1330,14 +1330,14 @@
   "Tipo": "N/A"
 },
 {
-  "Nombre": "MOBIL VACTRA OIL N° 2, 19LT",
+  "Nombre": "MOBIL VACTRA OIL NÂ° 2, 19LT",
   "Precio": 83990,
   "Marca": "Mobil",
   "Formato": "balde",
   "Tipo": "{index:11,post_id:null}"
 },
 {
-  "Nombre": "MOBIL VACTRA OIL N° 4, 19LT",
+  "Nombre": "MOBIL VACTRA OIL NÂ° 4, 19LT",
   "Precio": 83617,
   "Marca": "Mobil",
   "Formato": "balde",
@@ -1439,7 +1439,7 @@
   "Precio": 92990,
   "Marca": "Mobil",
   "Formato": "balde",
-  "Tipo": "N/A"
+  "Tipo": "{index:1,post_id:null,changed_at:2024-03-05T15:41:56.739Z}"
 },
 {
   "Nombre": "MOBIL DTE 10 EXCEL 32, 19LT",
@@ -1764,7 +1764,7 @@
   "Tipo": "{index:2,post_id:null}"
 },
 {
-  "Nombre": "MOBIL VELOCITE N°10, 19LT",
+  "Nombre": "MOBIL VELOCITE NÂ°10, 19LT",
   "Precio": 172194,
   "Marca": "Mobil",
   "Formato": "balde",
@@ -1904,7 +1904,7 @@
   "Tipo": "N/A"
 },
 {
-  "Nombre": "MOBIL VELOCITE N°6, 19LT",
+  "Nombre": "MOBIL VELOCITE NÂ°6, 19LT",
   "Precio": 227119,
   "Marca": "Mobil",
   "Formato": "balde",
@@ -2856,7 +2856,7 @@
   "Tipo": "N/A"
 },
 {
-  "Nombre": "Air Tool Oil S2 A 100 18,9L",
+  "Nombre": "SHELL Air Tool Oil S2 A 100 18,9L",
   "Precio": 116114,
   "Marca": "Shell",
   "Formato": "balde",
@@ -3605,7 +3605,7 @@
   "Tipo": "{index:0,post_id:null}"
 },
 {
-  "Nombre": "AZOLLA ZS 46             20L    TOT   CL",
+  "Nombre": "TOTAL AZOLLA ZS 46 20L CL",
   "Precio": 55580,
   "Marca": "Total",
   "Formato": "balde",
@@ -3626,7 +3626,7 @@
   "Tipo": "N/A"
 },
 {
-  "Nombre": "COOLELF AUTO SUPRA -37°C 20LP   TOT   CL",
+  "Nombre": "COOLELF AUTO SUPRA -37Â°C 20LP   TOT   CL",
   "Precio": 61429,
   "Marca": "Total",
   "Formato": "balde",
@@ -3710,7 +3710,7 @@
   "Tipo": "N/A"
 },
 {
-  "Nombre": "PNEUMA 100               20L    TOT   CL",
+  "Nombre": "TOTAL PNEUMA 100               20L      CL",
   "Precio": 70057,
   "Marca": "Total",
   "Formato": "balde",
@@ -4079,4 +4079,5 @@
   "Marca": "Total",
   "Formato": "balde",
   "Tipo": "N/A"
-}]
+}
+]

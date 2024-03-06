@@ -2,12 +2,17 @@ from openai import OpenAI
 import streamlit as st
 import main
 
-st.title("ChatGPT-like clone")
+st.title("Conico Cotizador de productos")
 
 client = OpenAI()
 # get the api key from the environment variable
 client.api_key = st.secrets["OPENAI_API_KEY"]
 
+#only do this once
+if "products" not in st.session_state:
+    with st.spinner(text="Cargando datos..."):
+        main.load_data()
+        st.session_state["products"] = "done"
 if "openai_model" not in st.session_state:
     st.session_state["openai_model"] = "gpt-3.5-turbo"
 
@@ -32,9 +37,9 @@ if prompt := st.chat_input("Que productos quiere cotizar"):
         #     ],
         #     stream=True,
         # )
-        response = main.find_alternatives(prompt)
+        with st.spinner(text="cotizando..."):
+            response = main.find_alternatives(prompt)
         st.markdown(response)
-        st.spinner(text="In progress...")
         # wait for the assistant to respond
 
 

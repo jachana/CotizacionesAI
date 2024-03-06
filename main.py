@@ -18,7 +18,6 @@ def make_markdown_table(cotizacion, total):
     return table
 
 def find_alternatives(message):
-    getProductsTable.create_data_files()
     products = extract_products.extract_products([message])
     print(message)
     print("---")
@@ -68,6 +67,8 @@ def test_extract_products():
         find_alternatives(message)
         print("\n\n")
 
+def load_data():
+    getProductsTable.create_data_files()
 
 #assistant_updater.update_assistant(assistant_id)
 

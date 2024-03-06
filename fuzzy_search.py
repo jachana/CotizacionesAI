@@ -56,6 +56,9 @@ def search_proper_name(query, product_format, viscosity=None, brand=None, produc
             continue
         file = open(file_name, "r", encoding="utf-8")
 
+        print(f"Reading file {file_name}")
+        print(f"File {file_name} exists")
+        print (file)
         products_json_string = file.read()
         products_json = json.loads(products_json_string)
 

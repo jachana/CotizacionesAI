@@ -135,10 +135,10 @@ def create_data_files():
     cajas_file_name = "cajas.json"
     otros_file_name = "otros.json"
 
-    tambores_file = open(tambores_file_name, "w")
-    baldes_file = open(baldes_file_name, "w")
-    cajas_file = open(cajas_file_name, "w")
-    otros_file = open(otros_file_name, "w")
+    tambores_file = open(tambores_file_name, "w", encoding="utf-8")
+    baldes_file = open(baldes_file_name, "w",encoding="utf-8")
+    cajas_file = open(cajas_file_name, "w",encoding="utf-8")
+    otros_file = open(otros_file_name, "w",encoding="utf-8")
 
     sum = 0
     # #write headers
@@ -205,10 +205,10 @@ def create_data_files():
 
         sum += int(value)
     #remove the last comma
-    # tambores_file.seek(tambores_file.tell() - 3, 0)
-    # baldes_file.seek(baldes_file.tell() - 3, 0)
-    # cajas_file.seek(cajas_file.tell() - 3, 0)
-    # otros_file.seek(otros_file.tell() - 3, 0)
+    tambores_file.seek(tambores_file.tell() - 3, 0)
+    baldes_file.seek(baldes_file.tell() - 3, 0)
+    cajas_file.seek(cajas_file.tell() - 3, 0)
+    otros_file.seek(otros_file.tell() - 3, 0)
     # close the JSON array
     tambores_file.write("\n]\n")
     baldes_file.write("\n]\n")

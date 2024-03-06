@@ -65,7 +65,7 @@
 {
   "Nombre": "PRO EMULSIFICANTE 5 L",
   "Precio": 15500,
-  "Marca": "Bañados",
+  "Marca": "BaÃ±ados",
   "Formato": "{index:8,post_id:null}",
   "Tipo": "{index:102,post_id:null}"
 },
@@ -872,7 +872,7 @@
   "Precio": 3328998,
   "Marca": "Mobil",
   "Formato": "{index:3,post_id:null}",
-  "Tipo": "N/A"
+  "Tipo": "{index:1,post_id:null,changed_at:2024-03-05T15:42:05.624Z}"
 },
 {
   "Nombre": "MOBILGEAR XMP 320, 1040LT",
@@ -1279,4 +1279,5 @@
   "Marca": "N/A",
   "Formato": "otro",
   "Tipo": "N/A"
-}]
+}
+]
