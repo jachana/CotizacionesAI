@@ -210,10 +210,10 @@ def create_data_files():
     cajas_file.seek(cajas_file.tell() - 3, 0)
     otros_file.seek(otros_file.tell() - 3, 0)
     # close the JSON array
-    tambores_file.write("]\n")
-    baldes_file.write("]\n")
-    cajas_file.write("]\n")
-    otros_file.write("]\n")
+    tambores_file.write("\n]\n")
+    baldes_file.write("\n]\n")
+    cajas_file.write("\n]\n")
+    otros_file.write("\n]\n")
 
     #close the file
     tambores_file.close()
