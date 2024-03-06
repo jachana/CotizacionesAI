@@ -35,6 +35,8 @@ if prompt := st.chat_input("Que productos quiere cotizar"):
         # wait for the assistant to respond
         if st.button("Reset", type="primary"):
             del st.session_state.messages
+            st.markdown("reseting")
+            st.write("writing")
             st.switch_page("app.py")
 
     st.session_state.messages.append({"role": "assistant", "content": response})
