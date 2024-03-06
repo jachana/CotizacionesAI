@@ -29,20 +29,12 @@ if prompt := st.chat_input("Que productos quiere cotizar"):
         st.markdown(prompt)
 
     with st.chat_message("assistant"):
-        # stream = client.chat.completions.create(
-        #     model=st.session_state["openai_model"],
-        #     messages=[
-        #         {"role": m["role"], "content": m["content"]}
-        #         for m in st.session_state.messages
-        #     ],
-        #     stream=True,
-        # )
         with st.spinner(text="cotizando..."):
             response = main.find_alternatives(prompt)
         st.markdown(response)
         # wait for the assistant to respond
         if st.button("Reset", type="primary"):
-            st.session_state.messages = []
+            del st.session_state.messages
 
 
     st.session_state.messages.append({"role": "assistant", "content": response})
