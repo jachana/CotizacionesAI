@@ -51,7 +51,10 @@ def search_proper_name(query, product_format, viscosity=None, brand=None, produc
 
 
     for file_name in files_to_open:
-        file = open(file_name, "r")
+        if not os.path.exists(file_name):
+            print(f"File {file_name} does not exist")
+            continue
+        file = open(file_name, "r", encoding="utf-8")
 
         products_json_string = file.read()
         products_json = json.loads(products_json_string)
