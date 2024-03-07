@@ -31,6 +31,8 @@ def create_pdf(detail, total):
 for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
+        print(message["content"])
+        print(message["role"])
         if(message["role"] == "assistant"):
             if st.button("Enviar Cotizacion"):
                 create_pdf(message["quote"], message["total"])
