@@ -23,7 +23,7 @@ def create_pdf(detail, total):
     print(detail)
 
 def add_quote_button(detail, total, index):
-    if st.button("Enviar Cotizacion", type="primary", key=("send_quote" + str(index))):
+    if st.button("Enviar Cotizacion " + str(index), type="primary", key=("send_quote" + str(index))):
             create_pdf(detail, total)
             st.markdown(detail)
 
