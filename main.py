@@ -49,7 +49,7 @@ def find_alternatives(message):
     for product in cotizacion:
         total += product[3]
     markdown = make_markdown_table(cotizacion, total)
-    return markdown
+    return markdown, cotizacion, total
 
 def test_extract_products():
     test_messages = ["necesito 5 tambores de nuto 68", "cotiza 2 baldes de morbilux ep 0",  "2 tambores de 5w30" , " 3 tambores de 20w50 y dos cajas de turbo 40", "cotiza 4 baldes de mobiltherm","cotizame un tambor de 20w50 lubrax","dos tambores de hydra xp 46 , 2 de tellus mx 46, 2 de azolla 46 y dos dte 26","una grasa de mobilux ep 2 y una grasa lubrax lith ep 2 en baldes" ]
