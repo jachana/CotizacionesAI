@@ -143,9 +143,13 @@ def create_data_files():
     baldes_file.write("[\n")
     cajas_file.write("[\n")
     otros_file.write("[\n")
-
+    tambores_element_amount = 0
+    cajas_element_amount = 0
+    baldes_element_amount = 0
+    otros_element_amount = 0
 
     for product in board_data:
+
         product_string = "{\n"
 
         #write the first element to a file
@@ -185,22 +189,32 @@ def create_data_files():
         product_string += "  \"Marca\": \"" + brand + "\",\n"
         product_string += "  \"Formato\": \"" + format + "\",\n"
         product_string += "  \"Tipo\": \"" + product_type + "\"\n"
-        product_string += "},\n"
+        product_string += "}"
+
         if format == "tambor":
+            #if it is the first element on this file, do not add a comma
+            if tambores_element_amount > 0:
+                tambores_file.write(",\n")
+            tambores_element_amount += 1
             tambores_file.write(product_string)
         elif format == "balde":
+            if baldes_element_amount > 0:
+                baldes_file.write(",\n")
+            baldes_element_amount += 1
             baldes_file.write(product_string)
         elif format == "caja":
+            if cajas_element_amount > 0:
+                cajas_file.write(",\n")
+            cajas_element_amount += 1
             cajas_file.write(product_string)
         else:
+            if otros_element_amount > 0:
+                otros_file.write(",\n")
+            otros_element_amount += 1
             otros_file.write(product_string)
 
         sum += int(value)
-    #remove the last comma
-    tambores_file.seek(tambores_file.tell() - 2, 0)
-    baldes_file.seek(baldes_file.tell() - 2, 0)
-    cajas_file.seek(cajas_file.tell() - 2, 0)
-    otros_file.seek(otros_file.tell() - 2, 0)
+
     # close the JSON array
     tambores_file.write("\n]")
     baldes_file.write("\n]")

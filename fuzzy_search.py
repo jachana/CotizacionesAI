@@ -56,6 +56,7 @@ def search_proper_name(query, product_format, viscosity=None, brand=None, produc
         file = open(file_name, "r", encoding="utf-8")
 
         products_json_string = file.read()
+        print (products_json_string)
         products_json = json.loads(products_json_string)
 
         product_names+= [product['Nombre'] for product in products_json]
@@ -88,8 +89,5 @@ def search_proper_name(query, product_format, viscosity=None, brand=None, produc
         if product[0] == best_match[0]:
             best_product_match = product
             break
-
-    # for product, score in best_scores:
-    #     print(f"{product} with a score of {score}")
 
     return best_product_match

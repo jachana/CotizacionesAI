@@ -1,6 +1,8 @@
 from openai import OpenAI
 import streamlit as st
 import main
+import quote_to_pdf
+from pathlib import Path
 
 st.title("Conico Cotizador de productos")
 
@@ -18,22 +20,22 @@ if "products" not in st.session_state:
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
-def create_pdf(detail, total):
-    print("Creating PDF")
-    print(detail)
+def create_pdf(detail, quote_file_name):
+    return quote_to_pdf.generate_quote_pdf(detail, quote_file_name)
 
 def add_quote_button(detail, total, index):
-    if st.button("Enviar Cotizacion " + str(index), type="primary", key=("send_quote" + str(index))):
-            create_pdf(detail, total)
-            st.markdown(detail)
-
-            st.markdown("cotizacion enviada")
+    #if st.button("Crear Cotizacion", type="primary", key=("send_quote" + str(index))):
+        quote_file_name = "quote_" + str(index) + ".pdf"
+        create_pdf(detail, quote_file_name)
+        #st.markdown(detail)
+        file_name = "output/" + quote_file_name
+        file_data = Path(file_name).read_bytes()
+        st.download_button("Descargar Cotizacion",file_data, file_name)
 #unecessary?
 # if "openai_model" not in st.session_state:
 #     st.session_state["openai_model"] = "gpt-3.5-turbo"
 
 
-# print all the existing messages
 message_index = 0
 for message in st.session_state.messages:
     message_index += 1
@@ -51,7 +53,7 @@ if prompt := st.chat_input("Que productos quiere cotizar"):
         with st.spinner(text="cotizando..."):
             markdown, detail, total = main.find_alternatives(prompt)
         st.markdown(markdown)
-        add_quote_button(detail,total,message_index+2)
+    add_quote_button(detail,total,message_index+2)
         # wait for the assistant to respond
 
 
@@ -61,4 +63,3 @@ if len(st.session_state.messages)>0:
         del st.session_state.messages
         del st.session_state.products
         st.rerun()
-
