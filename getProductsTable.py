@@ -116,7 +116,7 @@ def create_data_files():
 
     #Get the board data
     board_data = get_board_data(products_board_id)
-    update_row(board_id)
+    update_row(products_board_id)
     #print(board_data)
     #define the file naemes
     tambores_file_name = "tambores.json"
