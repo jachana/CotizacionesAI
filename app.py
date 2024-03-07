@@ -34,7 +34,7 @@ for message in st.session_state.messages:
         print(message["content"])
         print(message["role"])
         if(message["role"] == "assistant"):
-            if st.button("Enviar Cotizacion"):
+            if st.button("Enviar Cotizacion", key= "send_cotizacion"):
                 create_pdf(message["quote"], message["total"])
                 st.markdown("cotizacion enviada")
 
