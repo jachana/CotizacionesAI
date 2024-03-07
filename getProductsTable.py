@@ -1,11 +1,10 @@
 # Import necessary libraries
 import openai
 import requests
+import monday_board_writter
 
 # Monday.com API Key
-monday_api_key = 'eyJhbGciOiJIUzI1NiJ9.eyJ0aWQiOjI5OTI2MDc5NiwiYWFpIjoxMSwidWlkIjo1MTIxODQzNiwiaWFkIjoiMjAyMy0xMS0yOFQyMDoyMzoyMC4wMDBaIiwicGVyIjoibWU6d3JpdGUiLCJhY3RpZCI6MTk2NDA1NTYsInJnbiI6InVzZTEifQ.2TEc781SSNyHVkafhut5iYSARIoGpBTgqPJcrTDhlUg'
-
-
+monday_api_key = st.secrets["MONDAY_API_KEY"]
 #using monday.com API to get the board data
 
 def get_boards_structure():
@@ -26,8 +25,6 @@ def get_board_structure(board_id):
     data = {'query': query}
     response = requests.post(url, json=data, headers=headers)
     return response.json()
-
-
 
 def get_board_data(board_id):
   #here I might have to use pagination to get all the data
@@ -120,6 +117,7 @@ def create_data_files():
 
     #Get the board data
     board_data = get_board_data(products_board_id)
+    update_row(board_id)
     #print(board_data)
     #define the file naemes
     tambores_file_name = "tambores.json"
@@ -228,3 +226,14 @@ def create_data_files():
     otros_file.close()
 
     return [tambores_file_name, cajas_file_name, baldes_file_name, otros_file_name]
+
+def insert_row(board_id):
+    pass
+def update_row(board_id ):
+    api_key = os.getenv('MONDAY_API_KEY')
+    sku_column_id = 'sku'  # The column ID of the SKU
+    value_column_id = 'texto5'  # The column ID where you want to update the value
+    sku = '4202865'  # The SKU value to match
+    value = '\"test\"'  # The new value to set, make sure it's a JSON string
+
+    monday_board_writter.update_row(api_key, board_id, sku_column_id, sku, value_column_id, value)
