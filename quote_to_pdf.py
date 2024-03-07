@@ -2,7 +2,7 @@ from reportlab.lib.pagesizes import letter
 from reportlab.platypus import SimpleDocTemplate, Table, TableStyle
 from reportlab.lib import colors
 import os
-
+import main
 def generate_quote_pdf(products, filename="quote.pdf"):
     pdf_file ="output/"+ filename
     #make sure the directory exists
@@ -11,12 +11,17 @@ def generate_quote_pdf(products, filename="quote.pdf"):
 
     doc = SimpleDocTemplate(pdf_file, pagesize=letter)
     table_data = [["Producto", "precio Unidad", "cantidad", "Total"]]
-
-    # Add product data to table
     total_sum = 0
+
+    #from the products list change the format of prices to clp
     for product in products:
-        table_data.append([str(item) for item in product])
+        unit_price = main.to_clp_string(product[1])
         total_sum += product[3]  # Accumulate total amount
+        total_price = main.to_clp_string(product[3])
+        table_data.append([product[0], unit_price, product[2], total_price])
+
+    #change the total to clp
+    total_sum = main.to_clp_string(total_sum)
 
     # Add final total row
     table_data.append(["Final", "", "", total_sum])

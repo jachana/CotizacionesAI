@@ -30,7 +30,7 @@ def add_quote_button(detail, total, index):
         #st.markdown(detail)
         file_name = "output/" + quote_file_name
         file_data = Path(file_name).read_bytes()
-        st.download_button("Descargar Cotizacion",file_data, file_name)
+        st.download_button("Descargar Cotizacion",file_data, quote_file_name)
 #unecessary?
 # if "openai_model" not in st.session_state:
 #     st.session_state["openai_model"] = "gpt-3.5-turbo"

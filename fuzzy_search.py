@@ -56,7 +56,6 @@ def search_proper_name(query, product_format, viscosity=None, brand=None, produc
         file = open(file_name, "r", encoding="utf-8")
 
         products_json_string = file.read()
-        print (products_json_string)
         products_json = json.loads(products_json_string)
 
         product_names+= [product['Nombre'] for product in products_json]

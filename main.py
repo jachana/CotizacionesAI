@@ -9,12 +9,25 @@ import extract_products
 # file_names = ["tambores.json", "baldes.json", "cajas.json", "otros.json"]
 # assistant_id_beta = "asst_LbmJPRklqR6vRttFUAlyNihU"
 # assistant_id = "asst_DCRo8rnaW5BEFToSLmGmW4x6"
+
+def to_clp_string(price):
+    #format prices as clp this means that there should be a . every 3 digits from the right to the left and
+    #a , to separate the decimal part
+    price = str(price)
+    price = price[::-1]
+    price = [price[i:i+3] for i in range(0, len(price), 3)]
+    price = ".".join(price)
+    price = price[::-1]
+    return price
 def make_markdown_table(cotizacion, total):
     table = "| Producto | Precio unitario | Cantidad | Precio total |\n"
     table += "| --- | --- | --- | --- |\n"
+
     for product in cotizacion:
-        table += "| " + product[0] + " | " + str(product[1]) + " | " + str(product[2]) + " | " + str(product[3]) + " |\n"
-    table += "| Total | | | " + str(total) + " |\n"
+
+        table += "| " + product[0] + " | " + to_clp_string(product[1]) + " | " + str(product[2]) + " | " + to_clp_string(product[3]) + " |\n"
+
+    table += "| Total | | | " + to_clp_string(total) + " |\n"
     return table
 
 def find_alternatives(message):
