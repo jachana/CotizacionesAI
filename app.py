@@ -51,7 +51,7 @@ if prompt := st.chat_input("Que productos quiere cotizar"):
         with st.spinner(text="cotizando..."):
             markdown, detail, total = main.find_alternatives(prompt)
         st.markdown(markdown)
-        add_quote_button(detail,total,0)
+        add_quote_button(detail,total,message_index+1)
         # wait for the assistant to respond
 
 
