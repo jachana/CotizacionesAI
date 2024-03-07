@@ -4,7 +4,7 @@ import requests
 import monday_board_writter
 
 # Monday.com API Key
-monday_api_key = st.secrets["MONDAY_API_KEY"]
+monday_api_key = os.getenv("MONDAY_API_KEY")
 #using monday.com API to get the board data
 
 def get_boards_structure():
