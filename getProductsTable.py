@@ -2,7 +2,7 @@
 import openai
 import requests
 import monday_board_writter
-
+import os
 # Monday.com API Key
 monday_api_key = os.getenv("MONDAY_API_KEY")
 #using monday.com API to get the board data
