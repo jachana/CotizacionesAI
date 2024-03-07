@@ -42,7 +42,7 @@ def update_row(api_key, board_id, sku_column_id, sku, value_column_id, value):
             'query': mutation
         }
         response = requests.post('https://api.monday.com/v2', json=data, headers=headers)
-        print(response.json())
+        #print(response.json())
     else:
         print(f"No item found with SKU: {sku}")
 

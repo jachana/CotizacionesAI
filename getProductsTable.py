@@ -34,7 +34,6 @@ def get_board_data(board_id):
     page_size = 500
     #get the first page
     query = 'query {  boards(ids: ' + str(board_id) + ') { id items_page(limit: '+str(page_size)+'){ '+columns_request+' cursor  } items_count  }}'
-    print(query)
     url = 'https://api.monday.com/v2'
     headers = {'Authorization': monday_api_key}
     data = {'query': query}
