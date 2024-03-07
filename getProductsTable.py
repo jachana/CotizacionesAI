@@ -47,9 +47,7 @@ def get_board_data(board_id):
     response_json = response.json()
     #print( response_json)
     items_count = response_json['data']['boards'][0]['items_count']
-    print("items_count == " + str(items_count))
     items_requested = page_size
-    print("items_requested == " + str(items_requested))
     #add the first page to the list
     for item in response_json['data']['boards'][0]['items_page']['items']:
         name = item['name']
@@ -69,10 +67,8 @@ def get_board_data(board_id):
         #get the next pages
         cursor = response_json['data']['boards'][0]['items_page']['cursor']
 
-        print("cursor == " + cursor)
         while items_requested < items_count:
             query = 'query {  next_items_page (limit: ' + str(page_size) + ', cursor: "' + cursor + '") {'+columns_request+' cursor }  }'
-            print(query)
             data = {'query': query}
             response = requests.post(url, json=data, headers=headers)
             response_json = response.json()
@@ -93,9 +89,7 @@ def get_board_data(board_id):
                 productsList.append((name , brand, value,format,product_type))
             if(cursor == None):
                 break
-            print("cursor == " + cursor)
 
-    print("list length == " + str(len(productsList)))
     return productsList
 
 def create_data_files():
@@ -107,7 +101,6 @@ def create_data_files():
     #parse the boards
     boards = boards_structure['data']['boards']
     #print(boards)
-    print ("we have " + str(len(boards)) + " boards in the account.")
 
 
     #find the products board ID called "Subelementos de Productos"
@@ -119,7 +112,6 @@ def create_data_files():
             products_board_id = board['id']
             break
 
-    print("Checking board with name " + products_board_name + " and ID " + str(products_board_id))
 
     #Get All column names for the board
     #board_data = get_board_structure(products_board_id)
@@ -151,9 +143,13 @@ def create_data_files():
     baldes_file.write("[\n")
     cajas_file.write("[\n")
     otros_file.write("[\n")
-
+    tambores_element_amount = 0
+    cajas_element_amount = 0
+    baldes_element_amount = 0
+    otros_element_amount = 0
 
     for product in board_data:
+
         product_string = "{\n"
 
         #write the first element to a file
@@ -193,22 +189,32 @@ def create_data_files():
         product_string += "  \"Marca\": \"" + brand + "\",\n"
         product_string += "  \"Formato\": \"" + format + "\",\n"
         product_string += "  \"Tipo\": \"" + product_type + "\"\n"
-        product_string += "},\n"
+        product_string += "}"
+
         if format == "tambor":
+            #if it is the first element on this file, do not add a comma
+            if tambores_element_amount > 0:
+                tambores_file.write(",\n")
+            tambores_element_amount += 1
             tambores_file.write(product_string)
         elif format == "balde":
+            if baldes_element_amount > 0:
+                baldes_file.write(",\n")
+            baldes_element_amount += 1
             baldes_file.write(product_string)
         elif format == "caja":
+            if cajas_element_amount > 0:
+                cajas_file.write(",\n")
+            cajas_element_amount += 1
             cajas_file.write(product_string)
         else:
+            if otros_element_amount > 0:
+                otros_file.write(",\n")
+            otros_element_amount += 1
             otros_file.write(product_string)
 
         sum += int(value)
-    #remove the last comma
-    tambores_file.seek(tambores_file.tell() - 2, 0)
-    baldes_file.seek(baldes_file.tell() - 2, 0)
-    cajas_file.seek(cajas_file.tell() - 2, 0)
-    otros_file.seek(otros_file.tell() - 2, 0)
+
     # close the JSON array
     tambores_file.write("\n]")
     baldes_file.write("\n]")
@@ -220,6 +226,5 @@ def create_data_files():
     cajas_file.close()
     baldes_file.close()
     otros_file.close()
-    print("The sum of all the items is " + str(sum))
 
     return [tambores_file_name, cajas_file_name, baldes_file_name, otros_file_name]

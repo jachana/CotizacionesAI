@@ -13,7 +13,8 @@ def extract_products(messages):
     input_messages.extend([{"role": "user", "content": message} for message in messages])
 
     completion = client.chat.completions.create(
-    model="gpt-3.5-turbo",
+    model="gpt-3.5-turbo-0125",
+    response_format={"type":"json_object"},
     messages=input_messages
     )
 
@@ -25,7 +26,6 @@ def extract_products(messages):
 
     #parse the json response
     response_content = response_content.replace("'", "\"")
-    print(response_content)
     response_content = json.loads(response_content)
 
     products = response_content['products']

@@ -9,18 +9,29 @@ import extract_products
 # file_names = ["tambores.json", "baldes.json", "cajas.json", "otros.json"]
 # assistant_id_beta = "asst_LbmJPRklqR6vRttFUAlyNihU"
 # assistant_id = "asst_DCRo8rnaW5BEFToSLmGmW4x6"
+
+def to_clp_string(price):
+    #format prices as clp this means that there should be a . every 3 digits from the right to the left and
+    #a , to separate the decimal part
+    price = str(price)
+    price = price[::-1]
+    price = [price[i:i+3] for i in range(0, len(price), 3)]
+    price = ".".join(price)
+    price = price[::-1]
+    return price
 def make_markdown_table(cotizacion, total):
     table = "| Producto | Precio unitario | Cantidad | Precio total |\n"
     table += "| --- | --- | --- | --- |\n"
+
     for product in cotizacion:
-        table += "| " + product[0] + " | " + str(product[1]) + " | " + str(product[2]) + " | " + str(product[3]) + " |\n"
-    table += "| Total | | | " + str(total) + " |\n"
+
+        table += "| " + product[0] + " | " + to_clp_string(product[1]) + " | " + str(product[2]) + " | " + to_clp_string(product[3]) + " |\n"
+
+    table += "| Total | | | " + to_clp_string(total) + " |\n"
     return table
 
 def find_alternatives(message):
     products = extract_products.extract_products([message])
-    print(message)
-    print("---")
     cotizacion = []
     for product in products:
         product_base_name = product['product']
@@ -39,26 +50,19 @@ def find_alternatives(message):
             product_type = product['type']
         else:
             product_type = None
-        print("producto: " + product_base_name)
-        print("formato: " + product_format)
-        print("cantidad: " + str(product_quantity))
-        print("viscosidad: " + str(product_viscosity))
-        print("marca: " + str(product_brand))
-        print("tipo: " + str(product_type))
+
 
         product = fuzzy_search.search_proper_name(product_base_name, product_format, product_viscosity, product_brand, product_type)
-        #print("best: " + str(product_name))
         product_name = product[0]
         unit_price = product[1]
         total_price = product_quantity * unit_price
 
         cotizacion.append((product_name, unit_price, product_quantity, total_price))
-        print("\n")
     total = 0
     for product in cotizacion:
         total += product[3]
     markdown = make_markdown_table(cotizacion, total)
-    return markdown
+    return markdown, cotizacion, total
 
 def test_extract_products():
     test_messages = ["necesito 5 tambores de nuto 68", "cotiza 2 baldes de morbilux ep 0",  "2 tambores de 5w30" , " 3 tambores de 20w50 y dos cajas de turbo 40", "cotiza 4 baldes de mobiltherm","cotizame un tambor de 20w50 lubrax","dos tambores de hydra xp 46 , 2 de tellus mx 46, 2 de azolla 46 y dos dte 26","una grasa de mobilux ep 2 y una grasa lubrax lith ep 2 en baldes" ]
