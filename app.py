@@ -22,6 +22,12 @@ def create_pdf(detail, total):
     print("Creating PDF")
     print(detail)
 
+def add_quote_button(detail, total, index):
+    if st.button("Enviar Cotizacion", type="primary", key=("send_quote" + str(index))):
+            create_pdf(detail, total)
+            st.markdown(detail)
+
+            st.markdown("cotizacion enviada")
 #unecessary?
 # if "openai_model" not in st.session_state:
 #     st.session_state["openai_model"] = "gpt-3.5-turbo"
@@ -34,9 +40,7 @@ for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
     if(message["role"] == "assistant"):
-        if st.button("Enviar Cotizacion", type="primary", key=("send_quote" + str(message_index))):
-            create_pdf(message["quote"], message["total"])
-            st.markdown("cotizacion enviada")
+        add_quote_button(message["quote"], message["total"], message_index)
 
 if prompt := st.chat_input("Que productos quiere cotizar"):
     st.session_state.messages.append({"role": "user", "content": prompt})
@@ -47,9 +51,7 @@ if prompt := st.chat_input("Que productos quiere cotizar"):
         with st.spinner(text="cotizando..."):
             markdown, detail, total = main.find_alternatives(prompt)
         st.markdown(markdown)
-        if st.button("Enviar Cotizacion", type="primary", key=("send_quote" + str(0))):
-            create_pdf(detail, total)
-            st.markdown("cotizacion enviada")
+        add_quote_button(detail,total,0)
         # wait for the assistant to respond
 
 
