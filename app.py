@@ -47,6 +47,10 @@ if prompt := st.chat_input("Que productos quiere cotizar"):
         with st.spinner(text="cotizando..."):
             markdown, detail, total = main.find_alternatives(prompt)
         st.markdown(markdown)
+        if(message["role"] == "assistant"):
+        if st.button("Enviar Cotizacion", type="primary", key=("send_quote" + str(message_index))):
+            create_pdf(message["quote"], message["total"])
+            st.markdown("cotizacion enviada")
         # wait for the assistant to respond
 
 
