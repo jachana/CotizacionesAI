@@ -59,9 +59,9 @@ def get_board_data(board_id, columns_requested = ["precio_venta","formato","marc
         if format == None:
             format = "0"
         sku = item['column_values'][4]['value']
-        productsList.append((item_id, name ,brand, price,format, product_type, sku))
-    #TODO
-        #I NEEED TO MATCH THE NAME BRAND BVALUE AND FORMAT TO THE CORRECT COLUMN NAMES
+        annual_sales = item['column_values'][5]['value']
+        productsList.append((item_id, name ,brand, price,format, product_type, sku,annual_sales))
+
     if items_count > items_requested:
         #get the next pages
         cursor = response_json['data']['boards'][0]['items_page']['cursor']
@@ -88,7 +88,8 @@ def get_board_data(board_id, columns_requested = ["precio_venta","formato","marc
                     format = "0"
                 product_type = item['column_values'][3]['value']
                 sku = item['column_values'][4]['value']
-                productsList.append((item_id, name , brand, value,format,product_type,sku))
+                annual_sales = item['column_values'][5]['value']
+                productsList.append((item_id, name , brand, value,format,product_type,sku,annual_sales))
             if(cursor == None):
                 break
 
@@ -107,7 +108,7 @@ def create_data_files():
     #find the products board ID called "Productos"
     products_board_id = find_board_id_from_name("Productos")
 
-    desired_columns = ["precio_venta","formato","marca","tipo8", "sku"]
+    desired_columns = ["precio_venta","formato","marca","tipo8", "sku", "n_meros1"]
 
     board_data = get_board_data(products_board_id,desired_columns)
 
@@ -165,6 +166,9 @@ def create_data_files():
             format = "otro"
 
         product_type = product[5]
+
+        SKU = product[6]
+
         if product_type == None:
             product_type = "N/A"
         #replace all " in strings with '
@@ -172,12 +176,23 @@ def create_data_files():
         brand = brand.replace("\"", "")
         format = format.replace("\"", "")
         product_type = product_type.replace("\"", "")
+        if(SKU == None):
+            SKU = "MISSING SKU"
+        SKU = SKU.replace("\"", "")
+
+        annual_sales = product[7]
+        if(annual_sales == None):
+            annual_sales = "0"
+        else:
+            annual_sales = annual_sales.replace("\"", "")
 
         product_string += "  \"Nombre\": \"" + name + "\",\n"
         product_string += "  \"Precio\": " + str(value) + ",\n"
         product_string += "  \"Marca\": \"" + brand + "\",\n"
         product_string += "  \"Formato\": \"" + format + "\",\n"
-        product_string += "  \"Tipo\": \"" + product_type + "\"\n"
+        product_string += "  \"Tipo\": \"" + product_type + "\",\n"
+        product_string += "  \"SKU\": \"" + str(SKU) + "\",\n"
+        product_string += "  \"Anual Sales\": \"" + str(annual_sales) + "\"\n"
         product_string += "}"
 
         if format == "tambor":
