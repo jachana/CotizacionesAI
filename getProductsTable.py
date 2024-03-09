@@ -3,6 +3,7 @@ import openai
 import requests
 import monday_board_writter
 import os
+import json
 # Monday.com API Key
 monday_api_key = os.getenv("MONDAY_API_KEY")
 #using monday.com API to get the board data
@@ -59,6 +60,7 @@ def get_board_data(board_id, columns_requested = ["precio_venta","formato","marc
         if format == None:
             format = "0"
         sku = item['column_values'][4]['value']
+
         annual_sales = item['column_values'][5]['value']
         productsList.append((item_id, name ,brand, price,format, product_type, sku,annual_sales))
 
@@ -103,12 +105,73 @@ def find_board_id_from_name(name):
             return board['id']
     return None
 
+def get_brand_from_index(index):
+    if index != "0":
+        index = json.loads(index)
+        brand = index['ids']
+        if len(brand) == 1:
+            
+            if brand == [0]:
+                brand = "N/A"
+            elif brand == [1]:
+                brand = "Total"
+            elif brand == [2]:
+                brand = "Mobil"
+            elif brand == [3]:
+                brand = "Shell"
+            elif brand == [4]:
+                brand = "Lubrax"
+            elif brand == [5]:
+                brand = "Chevron" #Chevron
+            elif brand == [6]:
+                brand = "Molykote"
+            elif brand == [7]:
+                brand = "Matrix"
+            elif brand == [8]:
+                brand = "Molykote"
+            elif brand == [9]:
+                brand = "Matrix"
+            elif brand == [10]:
+                brand = "Reinger"
+            elif brand == [11]:
+                brand = "Total"
+            elif brand == [12]:
+                brand = "Banados"
+            elif brand == [13]:
+                brand = "Matrix"
+            else:
+                brand = str(brand) + " N/A"
+        else:
+            brand = "N/A"
+    else:
+        brand = "N/A"
+
+    return brand
+
+def get_format_from_index(index):
+    if index != "0":
+        index = json.loads(index)
+        format = index['index']
+    
+        if format == 0:
+            format = "balde"
+        elif format == 1:
+            format = "tambor"
+        elif format == 2:
+            format = "caja"
+        else:
+            format = "otro"
+    else:
+        format = "otro"
+    return format
+
+
 def create_data_files():
 
     #find the products board ID called "Productos"
     products_board_id = find_board_id_from_name("Productos")
 
-    desired_columns = ["precio_venta","formato","marca","tipo8", "sku", "n_meros1"]
+    desired_columns = ["precio_venta","formato","marca9","tipo8", "sku", "n_meros1"]
 
     board_data = get_board_data(products_board_id,desired_columns)
 
@@ -150,41 +213,32 @@ def create_data_files():
             value = "9999999999"
         else:
             value = eval(product[3])
-        format = product[4]
         brand = product[2]
         if(brand == None):
             brand = "N/A"
-
-        if format != "0":
-            if format[9] == '0':
-                format = "balde"
-            elif format[9] == '1':
-                format = "tambor"
-            elif format[9] == '2':
-                format = "caja"
-        else:
-            format = "otro"
+        brand = get_brand_from_index(brand)
+        
+        format = product[4]
+        format = get_format_from_index(format)
 
         product_type = product[5]
 
         SKU = product[6]
-
+        if(SKU == None):
+            SKU = "MISSING SKU"
         if product_type == None:
             product_type = "N/A"
+        annual_sales = product[7]
+        if(annual_sales == None):
+            annual_sales = "0"
+
         #replace all " in strings with '
         name = name.replace("\"", "")
         brand = brand.replace("\"", "")
         format = format.replace("\"", "")
         product_type = product_type.replace("\"", "")
-        if(SKU == None):
-            SKU = "MISSING SKU"
         SKU = SKU.replace("\"", "")
-
-        annual_sales = product[7]
-        if(annual_sales == None):
-            annual_sales = "0"
-        else:
-            annual_sales = annual_sales.replace("\"", "")
+        annual_sales = annual_sales.replace("\"", "")
 
         product_string += "  \"Nombre\": \"" + name + "\",\n"
         product_string += "  \"Precio\": " + str(value) + ",\n"
@@ -245,7 +299,7 @@ def update_anual_sales():
     sku = '"4202865"'  # The SKU value to match
     value = 0  # The new value to set, make sure it's a JSON string
     board_id = find_board_id_from_name("Productos")
-    product_list = get_board_data(board_id,["precio_venta","formato","marca","tipo8", "sku", "n_meros1"] )
+    product_list = get_board_data(board_id,["precio_venta","formato","marca9","tipo8", "sku", "n_meros1", "men__desplegable"] )
     #print the list of products row by row
     # for product in product_list:
     #     print(product)
