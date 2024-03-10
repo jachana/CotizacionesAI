@@ -4,29 +4,10 @@ import requests
 import monday_board_writter
 import os
 import json
-# Monday.com API Key
-monday_api_key = os.getenv("MONDAY_API_KEY")
-#using monday.com API to get the board data
 
-def get_boards_structure():
-    query =     query = 'query {  me {    name  }  boards(limit: 100) {    name   id  }}'
 
-    url = 'https://api.monday.com/v2'
-    headers = {'Authorization': monday_api_key}
-    data = {'query': query}
-    response = requests.post(url, json=data, headers=headers)
-    return response.json()
 
-#get the board structure,column names and types
-def get_board_structure(board_id):
-    query = 'query {  boards(ids: ' + str(board_id) + ') {    name    columns {      title   id       }  }}'
-    url = 'https://api.monday.com/v2'
-    headers = {'Authorization': monday_api_key}
-    data = {'query': query}
-    response = requests.post(url, json=data, headers=headers)
-    return response.json()
-
-def get_board_data(board_id, columns_requested = ["precio_venta","formato","marca","tipo8"]):
+def get_products_board_data(board_id, columns_requested = ["precio_venta","formato","marca","tipo8"]):
   #here I might have to use pagination to get all the data
     #first I should get the biggest page size possible
     productsList = []
@@ -39,7 +20,7 @@ def get_board_data(board_id, columns_requested = ["precio_venta","formato","marc
     #get the first page
     query = 'query {  boards(ids: ' + str(board_id) + ') { id items_page(limit: '+str(page_size)+'){ '+columns_request+' cursor  } items_count  }}'
     url = 'https://api.monday.com/v2'
-    headers = {'Authorization': monday_api_key}
+    headers = {'Authorization': monday_board_writter.monday_api_key}
     data = {'query': query}
     response = requests.post(url, json=data, headers=headers)
     # now I should get the next pages if there are any
@@ -97,13 +78,6 @@ def get_board_data(board_id, columns_requested = ["precio_venta","formato","marc
 
     return productsList
 
-def find_board_id_from_name(name):
-    boards_structure = get_boards_structure()
-    boards = boards_structure['data']['boards']
-    for board in boards:
-        if board['name'] == name:
-            return board['id']
-    return None
 
 def get_brand_from_index(index):
     if index != "0":
@@ -169,11 +143,11 @@ def get_format_from_index(index):
 def create_data_files():
 
     #find the products board ID called "Productos"
-    products_board_id = find_board_id_from_name("Productos")
+    products_board_id = monday_board_writter.find_board_id_from_name("Productos")
 
     desired_columns = ["precio_venta","formato","marca9","tipo8", "sku", "n_meros1"]
 
-    board_data = get_board_data(products_board_id,desired_columns)
+    board_data = get_products_board_data(products_board_id,desired_columns)
 
     #print the data one row at a time
     # for row in board_data:
@@ -207,6 +181,7 @@ def create_data_files():
         product_string = "{\n"
 
         #write the first element to a file
+        id = product[0]
         name = product[1]
         value =product[3]
         if value == None:
@@ -246,7 +221,8 @@ def create_data_files():
         product_string += "  \"Formato\": \"" + format + "\",\n"
         product_string += "  \"Tipo\": \"" + product_type + "\",\n"
         product_string += "  \"SKU\": \"" + str(SKU) + "\",\n"
-        product_string += "  \"Anual Sales\": \"" + str(annual_sales) + "\"\n"
+        product_string += "  \"Anual Sales\": \"" + str(annual_sales) + "\",\n"
+        product_string += "  \"ID\": \"" + str(id) + "\"\n"
         product_string += "}"
 
         if format == "tambor":
@@ -291,15 +267,16 @@ def insert_row(board_id):
     pass
 def update_row(board_id ,sku, value_column_id, value,products_list):
     api_key = os.getenv('MONDAY_API_KEY')
+    item_id =  monday_board_writter.find_item_id_by_sku( sku, products_list)
 
-    monday_board_writter.update_row(api_key, board_id, sku, value_column_id, value, products_list)
+    monday_board_writter.update_row(api_key, board_id, sku, value_column_id, value, item_id)
 
 def update_anual_sales():
     value_column_id = 'n_meros1'  # The column ID where you want to update the value
     sku = '"4202865"'  # The SKU value to match
     value = 0  # The new value to set, make sure it's a JSON string
-    board_id = find_board_id_from_name("Productos")
-    product_list = get_board_data(board_id,["precio_venta","formato","marca9","tipo8", "sku", "n_meros1", "men__desplegable"] )
+    board_id = monday_board_writter.find_board_id_from_name("Productos")
+    product_list = get_products_board_data(board_id,["precio_venta","formato","marca9","tipo8", "sku", "n_meros1", "men__desplegable"] )
     #print the list of products row by row
     # for product in product_list:
     #     print(product)

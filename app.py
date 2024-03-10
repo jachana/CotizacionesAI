@@ -5,6 +5,7 @@ import quote_to_pdf
 from pathlib import Path
 import os
 import glob
+import monday_board_writter
 
 st.title("Conico Cotizador de productos")
 
@@ -16,11 +17,14 @@ def create_pdf(detail, quote_file_name):
     return quote_to_pdf.generate_quote_pdf(detail, quote_file_name)
 
 def add_quote_button(detail, index):
-    quote_file_name = "quote_" + str(index) + ".pdf"
-    create_pdf(detail, quote_file_name)
-    file_name = "output/" + quote_file_name
-    file_data = Path(file_name).read_bytes()
-    st.download_button("Descargar Cotizacion",file_data, quote_file_name)
+    #quote_file_name = "quote_" + str(index) + ".pdf"
+    # create_pdf(detail, quote_file_name)
+    # file_name = "output/" + quote_file_name
+    # file_data = Path(file_name).read_bytes()
+    # st.download_button("Descargar Cotizacion",file_data, quote_file_name)
+    if st.button("Cotizar", key=index):
+        monday_board_writter.add_quote_row(detail)
+    
 
 def delete_output_files():
     files_to_delete = glob.glob('output/*')
@@ -46,7 +50,8 @@ def run_app():
         with st.chat_message(message["role"]):
             st.markdown(message["content"])
         if message["role"] == "assistant":
-            add_quote_button(message["quote"], message_index)
+           #add_quote_button(message["quote"], message_index)
+            pass
 
     if prompt := st.chat_input("Que productos quiere cotizar"):
         st.session_state.messages.append({"role": "user", "content": prompt})
@@ -57,7 +62,7 @@ def run_app():
             with st.spinner(text="cotizando..."):
                 markdown, detail, _ = main.find_alternatives(prompt)
             st.markdown(markdown)
-        add_quote_button(detail,message_index+2)
+        #add_quote_button(detail,message_index+2)
         st.session_state.messages.append({"role": "assistant", "content": markdown, "quote": detail})
 
     if len(st.session_state.messages)>0:

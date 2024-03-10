@@ -56,8 +56,9 @@ def find_alternatives(message):
         product_name = product[0]
         unit_price = product[1]
         total_price = product_quantity * unit_price
+        id = product[6]
 
-        cotizacion.append((product_name, unit_price, product_quantity, total_price))
+        cotizacion.append((product_name, unit_price, product_quantity, total_price, id))
     total = 0
     for product in cotizacion:
         total += product[3]

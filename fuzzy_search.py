@@ -71,7 +71,7 @@ def search_proper_name(query, product_format, viscosity=None, brand=None, produc
 
         product_names+= [product['Nombre'] for product in products_json]
         #add all the products to the list as an array
-        products += [(product['Nombre'], product['Precio'], product['Marca'], product['Formato'], product['Tipo'], product['Anual Sales']) for product in products_json]
+        products += [(product['Nombre'], product['Precio'], product['Marca'], product['Formato'], product['Tipo'], product['Anual Sales'], product['ID']) for product in products_json]
 
     #filter the products by viscosity  and brand if needed
     # if viscosity:
