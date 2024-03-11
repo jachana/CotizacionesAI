@@ -1,0 +1,5 @@
+output/*
+*.json
+*.pdf
+.streamlit/*
+__pycache__

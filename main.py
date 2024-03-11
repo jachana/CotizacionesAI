@@ -4,51 +4,34 @@ import assistant_updater
 import update_assistant_files
 import fuzzy_search
 import extract_products
-from flask import Flask, request, render_template
 
 #file_names = getProductsTable.create_data_files()
-file_names = ["tambores.json", "baldes.json", "cajas.json", "otros.json"]
-assistant_id_beta = "asst_LbmJPRklqR6vRttFUAlyNihU"
-assistant_id = "asst_DCRo8rnaW5BEFToSLmGmW4x6"
+# file_names = ["tambores.json", "baldes.json", "cajas.json", "otros.json"]
+# assistant_id_beta = "asst_LbmJPRklqR6vRttFUAlyNihU"
+# assistant_id = "asst_DCRo8rnaW5BEFToSLmGmW4x6"
 
+def to_clp_string(price):
+    #format prices as clp this means that there should be a . every 3 digits from the right to the left and
+    #a , to separate the decimal part
+    price = str(price)
+    price = price[::-1]
+    price = [price[i:i+3] for i in range(0, len(price), 3)]
+    price = ".".join(price)
+    price = price[::-1]
+    return price
+def make_markdown_table(cotizacion, total):
+    table = "| Producto | Precio unitario | Cantidad | Precio total |\n"
+    table += "| --- | --- | --- | --- |\n"
 
-app = Flask(__name__)
-
-@app.route('/')
-def home():
-    return render_template('index.html')
-
-@app.route('/process', methods=['POST'])
-def process():
-    input_text = request.form['input_text']
-    # Here, replace `process_text` with the name of your function that processes the text
-    output_text, total_price = find_alternatives(input_text)
-    #transform to html
-    html_text = make_html(output_text, total_price)
-    print(html_text)
-
-    return render_template('result.html', output_text=html_text)
-
-def process_text(text):
-    return text.upper()
-
-if __name__ == '__main__':
-    app.run(debug=True)
-
-def make_html(cotizacion, total):
-    html = "<h1>Cotizacion</h1>"
     for product in cotizacion:
-        html += "<p>Producto: " + product[0] + "</p>"
-        html += "<p>Precio unitario: " + str(product[1]) + "</p>"
-        html += "<p>Cantidad: " + str(product[2]) + "</p>"
-        html += "<p>Precio total: " + str(product[3]) + "</p>"
-    html += "<p>Total: " + str(total) + "</p>"
-    return html
+
+        table += "| " + product[0] + " | " + to_clp_string(product[1]) + " | " + str(product[2]) + " | " + to_clp_string(product[3]) + " |\n"
+
+    table += "| Total | | | " + to_clp_string(total) + " |\n"
+    return table
 
 def find_alternatives(message):
     products = extract_products.extract_products([message])
-    print(message)
-    print("---")
     cotizacion = []
     for product in products:
         product_base_name = product['product']
@@ -67,29 +50,20 @@ def find_alternatives(message):
             product_type = product['type']
         else:
             product_type = None
-        print("producto: " + product_base_name)
-        print("formato: " + product_format)
-        print("cantidad: " + str(product_quantity))
-        print("viscosidad: " + str(product_viscosity))
-        print("marca: " + str(product_brand))
-        print("tipo: " + str(product_type))
+
 
         product = fuzzy_search.search_proper_name(product_base_name, product_format, product_viscosity, product_brand, product_type)
-        #print("best: " + str(product_name))
         product_name = product[0]
         unit_price = product[1]
         total_price = product_quantity * unit_price
+        id = product[6]
 
-        cotizacion.append((product_name, unit_price, product_quantity, total_price))
-        print("\n")
+        cotizacion.append((product_name, unit_price, product_quantity, total_price, id))
     total = 0
     for product in cotizacion:
         total += product[3]
-    print("Cotizacion: " + str(cotizacion))
-    print("Total: " + str(total))
-    html_cotizacion = make_html(cotizacion, total)
-    print("html: " + html_cotizacion)
-    return html_cotizacion, total
+    markdown = make_markdown_table(cotizacion, total)
+    return markdown, cotizacion, total
 
 def test_extract_products():
     test_messages = ["necesito 5 tambores de nuto 68", "cotiza 2 baldes de morbilux ep 0",  "2 tambores de 5w30" , " 3 tambores de 20w50 y dos cajas de turbo 40", "cotiza 4 baldes de mobiltherm","cotizame un tambor de 20w50 lubrax","dos tambores de hydra xp 46 , 2 de tellus mx 46, 2 de azolla 46 y dos dte 26","una grasa de mobilux ep 2 y una grasa lubrax lith ep 2 en baldes" ]
@@ -98,6 +72,8 @@ def test_extract_products():
         find_alternatives(message)
         print("\n\n")
 
+def load_data():
+    getProductsTable.create_data_files()
 
 #assistant_updater.update_assistant(assistant_id)
 

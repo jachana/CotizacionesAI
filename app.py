@@ -1,138 +1,73 @@
-# Import necessary libraries
-import getProductsTable
-import assistant_updater
-import update_assistant_files
-import fuzzy_search
-import extract_products
-from flask import Flask, request, render_template
+from openai import OpenAI
+import streamlit as st
+import main
+import quote_to_pdf
+from pathlib import Path
+import os
+import glob
+import monday_board_writter
 
-#file_names = getProductsTable.create_data_files()
-file_names = ["tambores.json", "baldes.json", "cajas.json", "otros.json"]
-assistant_id_beta = "asst_LbmJPRklqR6vRttFUAlyNihU"
-assistant_id = "asst_DCRo8rnaW5BEFToSLmGmW4x6"
+st.title("Conico Cotizador de productos")
 
+client = OpenAI()
+# get the api key from the environment variable
+client.api_key = st.secrets["OPENAI_API_KEY"]
 
-app = Flask(__name__)
+def create_pdf(detail, quote_file_name):
+    return quote_to_pdf.generate_quote_pdf(detail, quote_file_name)
 
-@app.route('/')
-def home():
-    return render_template('index.html')
+def add_quote_button(detail, index):
+    #quote_file_name = "quote_" + str(index) + ".pdf"
+    # create_pdf(detail, quote_file_name)
+    # file_name = "output/" + quote_file_name
+    # file_data = Path(file_name).read_bytes()
+    # st.download_button("Descargar Cotizacion",file_data, quote_file_name)
+    if st.button("Cotizar", key=index):
+        monday_board_writter.add_quote_row(detail)
+    
 
-@app.route('/process', methods=['POST'])
-def process():
-    input_text = request.form['input_text']
-    # Here, replace `process_text` with the name of your function that processes the text
-    output_text, total_price = find_alternatives(input_text)
-    #transform to html
-    html_text = make_html(output_text, total_price)
-    print(html_text)
+def delete_output_files():
+    files_to_delete = glob.glob('output/*')
+    for deletable in files_to_delete:
+        os.remove(deletable)
+def setup_app():
+    if "products" not in st.session_state:
+        with st.spinner(text="Cargando datos..."):
+            main.load_data()
+            st.session_state["products"] = "done"
+            delete_output_files()
+    # create the messages list
+    if "messages" not in st.session_state:
+        st.session_state.messages = []
+def run_app():
+#create once in the session state objects
+#create/overwrite products files with the latest data
+    setup_app()
 
-    return render_template('result.html', output_text=html_text)
+    message_index = 0
+    for message in st.session_state.messages:
+        message_index += 1
+        with st.chat_message(message["role"]):
+            st.markdown(message["content"])
+        if message["role"] == "assistant":
+           #add_quote_button(message["quote"], message_index)
+            pass
 
-def process_text(text):
-    return text.upper()
+    if prompt := st.chat_input("Que productos quiere cotizar"):
+        st.session_state.messages.append({"role": "user", "content": prompt})
+        with st.chat_message("user"):
+            st.markdown(prompt)
 
-if __name__ == '__main__':
-    app.run(debug=False)
+        with st.chat_message("assistant"):
+            with st.spinner(text="cotizando..."):
+                markdown, detail, _ = main.find_alternatives(prompt)
+            st.markdown(markdown)
+        #add_quote_button(detail,message_index+2)
+        st.session_state.messages.append({"role": "assistant", "content": markdown, "quote": detail})
 
-def make_html(cotizacion, total):
-    # Sample data in the specified format
-    products = cotizacion
-
-    # Start of the HTML table, defining the headers
-    html_table = """
-    <table border="1">
-        <tr>
-            <th>Product Name</th>
-            <th>Unit Price</th>
-            <th>Product Quantity</th>
-            <th>Total Price</th>
-        </tr>
-    """
-
-    # Adding each product's details to the table
-    for product in products:
-        html_table += f"""
-        <tr>
-            <td>{product[0]}</td>
-            <td>{product[1]}</td>
-            <td>{product[2]}</td>
-            <td>{product[3]}</td>
-        </tr>
-        """
-    html_table += f"""
-        <tr>
-            <td>Total</td>
-            <td></td>
-            <td></td>
-            <td>{total}</td>
-        </tr>
-        """
-    # Closing the table
-    html_table += "</table>"
-
-    print(html_table)
-    return html_table
-
-
-def find_alternatives(message):
-    products = extract_products.extract_products([message])
-    print(message)
-    print("---")
-    cotizacion = []
-    for product in products:
-        product_base_name = product['product']
-        product_format = product['format']
-        product_quantity = product['quantity']
-        #get viscosity if it exists
-        if 'viscosity' in product:
-            product_viscosity = product['viscosity']
-        else:
-            product_viscosity = None
-        if 'brand' in product:
-            product_brand = product['brand']
-        else:
-            product_brand = None
-        if 'type' in product:
-            product_type = product['type']
-        else:
-            product_type = None
-        print("producto: " + product_base_name)
-        print("formato: " + product_format)
-        print("cantidad: " + str(product_quantity))
-        print("viscosidad: " + str(product_viscosity))
-        print("marca: " + str(product_brand))
-        print("tipo: " + str(product_type))
-
-        product = fuzzy_search.search_proper_name(product_base_name, product_format, product_viscosity, product_brand, product_type)
-        #print("best: " + str(product_name))
-        product_name = product[0]
-        unit_price = product[1]
-        total_price = product_quantity * unit_price
-
-        cotizacion.append((product_name, unit_price, product_quantity, total_price))
-        print("\n")
-    total = 0
-    for product in cotizacion:
-        total += product[3]
-    print("Cotizacion: " + str(cotizacion))
-    print("Total: " + str(total))
-    return cotizacion, total
-
-def test_extract_products():
-    test_messages = ["necesito 5 tambores de nuto 68", "cotiza 2 baldes de morbilux ep 0",  "2 tambores de 5w30" , " 3 tambores de 20w50 y dos cajas de turbo 40", "cotiza 4 baldes de mobiltherm","cotizame un tambor de 20w50 lubrax","dos tambores de hydra xp 46 , 2 de tellus mx 46, 2 de azolla 46 y dos dte 26","una grasa de mobilux ep 2 y una grasa lubrax lith ep 2 en baldes" ]
-
-    for message in test_messages:
-        find_alternatives(message)
-        print("\n\n")
-
-
-#assistant_updater.update_assistant(assistant_id)
-
-
-#test_extract_products()
-
-#update_assistant_files.remove_all_files()
-
-#update_assistant_files.replace_all_files([assistant_id_beta,assistant_id], file_names)
-#update_assistant_files.replace_all_files([assistant_id_beta,assistant_id], file_names)
+    if len(st.session_state.messages)>0:
+        if st.button("Reset", type="primary"):
+            del st.session_state.messages
+            del st.session_state.products
+            st.rerun()
+run_app()

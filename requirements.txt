@@ -1,0 +1,6 @@
+openai
+fuzzywuzzy
+streamlit
+pandas
+python-Levenshtein
+reportlab
