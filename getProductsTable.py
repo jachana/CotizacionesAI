@@ -4,6 +4,8 @@ import requests
 import monday_board_writter
 import os
 import json
+import math
+
 
 
 
@@ -82,7 +84,7 @@ def get_products_board_data(board_id, columns_requested = ["precio_venta","forma
 def get_brand_from_index(index):
     if index != "0":
         index = json.loads(index)
-        brand = index['ids']
+        brand = index['index']
         if len(brand) == 1:
             
             if brand == [0]:
@@ -145,7 +147,7 @@ def create_data_files():
     #find the products board ID called "Productos"
     products_board_id = monday_board_writter.find_board_id_from_name("Productos")
 
-    desired_columns = ["precio_venta","formato","marca9","tipo8", "sku", "n_meros1"]
+    desired_columns = ["precio_venta","formato","marca5","tipo8", "sku", "n_meros1"]
 
     board_data = get_products_board_data(products_board_id,desired_columns)
 
@@ -179,19 +181,20 @@ def create_data_files():
     for product in board_data:
 
         product_string = "{\n"
-
         #write the first element to a file
         id = product[0]
         name = product[1]
         value =product[3]
         if value == None:
-            value = "9999999999"
+            value = 9999999999
         else:
             value = eval(product[3])
+        value = int(float(value))
         brand = product[2]
         if(brand == None):
             brand = "N/A"
-        brand = get_brand_from_index(brand)
+        else:
+            brand = "N/A"#get_brand_from_index(brand)
         
         format = product[4]
         format = get_format_from_index(format)
